@@ -321,6 +321,7 @@ public final class SwingWindow extends Node implements Window {
 			} catch (IOException e) {
 				// Empty on purpose, will return null as an error
 				System.out.println("File :"+ name +" not found");
+                System.out.println(e);
 			} finally {
 				try {
 					if (input != null)

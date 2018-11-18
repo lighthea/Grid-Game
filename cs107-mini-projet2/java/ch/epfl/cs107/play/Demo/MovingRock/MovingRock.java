@@ -15,7 +15,7 @@ public class MovingRock extends GraphicsEntity implements Actor {
 
     public MovingRock(Vector position, String text){
 
-        super(position , new ImageGraphics(ResourcePath.getSprite("rock.3"), 0.1f,0.1f, null, Vector.ZERO , 1.0f, -Float.MAX_VALUE));
+        super(position , new ImageGraphics(ResourcePath.getSprite("rock3"), 0.1f,0.1f, null, Vector.ZERO , 1.0f, -Float.MAX_VALUE));
         this.text = new TextGraphics(text , 0.03f, Color.BLUE) ;
         this.text.setParent(this);
 

@@ -16,13 +16,14 @@ public class Demo implements Game {
     private MovingRock Rock;
     private Window window;
     private FileSystem fileSystem;
+
     @Override
     public int getFrameRate() {
         return 24;
     }
     @Override
     public String getTitle() {
-        return "balek";
+        return "bar";
     }
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
@@ -30,7 +31,7 @@ public class Demo implements Game {
         this.window = window;
         this.fileSystem = fileSystem;
 
-        Rock = new MovingRock(Vector.ZERO, "balek");
+        Rock = new MovingRock(Vector.ZERO, "foo");
 
 
         return true;
