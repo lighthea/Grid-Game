@@ -1,5 +1,6 @@
 package ch.epfl.cs107.play;
 
+import ch.epfl.cs107.play.Demo.Demo;
 import ch.epfl.cs107.play.game.Game;
 import ch.epfl.cs107.play.game.areagame.demo1.demo1;
 import ch.epfl.cs107.play.game.enigme.Enigme;
@@ -29,7 +30,7 @@ public class Play {
 		final FileSystem fileSystem = new ResourceFileSystem(DefaultFileSystem.INSTANCE);
 
         // Create a demo game and initialize corresponding texts
-		final Game game = new demo1();
+		final Game game = new Demo();
 		XMLTexts.initialize(fileSystem, "strings/enigme_fr.xml");
 
 		// Use Swing display
