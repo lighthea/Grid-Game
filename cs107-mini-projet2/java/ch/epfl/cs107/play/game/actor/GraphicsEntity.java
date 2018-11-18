@@ -74,6 +74,7 @@ public class GraphicsEntity extends Entity {
     public void draw(Canvas canvas) {
         if(graphics!= null) {
             graphics.draw(canvas);
+
         }
     }
 }

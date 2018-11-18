@@ -60,7 +60,7 @@ public final class XMLTexts {
         }
         catch (IOException e) {
             // Empty on purpose, will return null as an error
-            System.out.println("Text File :"+ textFileName +" not found");
+            System.out.println("Text File :" + textFileName + " not found");
         } catch (SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }

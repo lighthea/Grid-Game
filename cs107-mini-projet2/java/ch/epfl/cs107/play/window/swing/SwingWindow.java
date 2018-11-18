@@ -311,7 +311,8 @@ public final class SwingWindow extends Node implements Window {
 
 	@Override
 	public SwingImage getImage(String name, RegionOfInterest roi, boolean removeBackground) {
-		SwingImage image = images.get(name+roi);
+		SwingImage image = images.get(name + roi);
+
 		if (image == null) {
 			InputStream input = null;
 			try {
@@ -381,8 +382,9 @@ public final class SwingWindow extends Node implements Window {
 		if (sound == null) {
 			InputStream input = null;
 			try {
-				input = fileSystem.read(name);
-				sound = new SwingSound(input);
+			    input = fileSystem.read(name);
+			    sound = new SwingSound(input);
+
 			} catch (IOException | UnsupportedAudioFileException e) {
 				// Empty on purpose, will return null as an error
 				System.out.println("File :"+ name +" not found or not readable");

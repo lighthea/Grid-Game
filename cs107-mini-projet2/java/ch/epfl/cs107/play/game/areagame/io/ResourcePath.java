@@ -5,7 +5,7 @@ public class ResourcePath {
 
     /// TODO Adapt Me if needed
 
-    private static final String SPRITE = "images/sprites/";
+    private static final String SPRITE = "D:\\DEVELOPPEMENT\\Projects\\GridGame\\Grid Game\\Grid-Game\\cs107-mini-projet2\\res\\images\\sprites\\";
     private static final String BEHAVIORS = "images/behaviors/";
     private static final String BACKGROUNDS = "images/backgrounds/";
     private static final String FOREGROUNDS = "images/foregrounds/";
@@ -15,7 +15,6 @@ public class ResourcePath {
     private static final String IMAGE_EXTENSION = ".png";
     private static final String SOUNDS_EXTENSION = ".wav";
     private static final String STRINGS_EXTENSION = ".xml";
-
 
     public static String getSprite(String name){
         return SPRITE+name+IMAGE_EXTENSION;

@@ -2,7 +2,6 @@ package ch.epfl.cs107.play;
 
 import ch.epfl.cs107.play.Demo.Demo;
 import ch.epfl.cs107.play.game.Game;
-import ch.epfl.cs107.play.game.areagame.demo1.demo1;
 import ch.epfl.cs107.play.game.enigme.Enigme;
 import ch.epfl.cs107.play.io.DefaultFileSystem;
 import ch.epfl.cs107.play.io.FileSystem;
