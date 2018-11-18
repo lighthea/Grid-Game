@@ -2,6 +2,9 @@ package ch.epfl.cs107.play.math;
 
 import java.io.Serializable;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 /**
  * Represents an immutable 2D floating-point vector.
  */
@@ -42,7 +45,7 @@ public final class Vector implements Serializable {
     
     /** @return (float): euclidean length */
     public float getLength() {
-        return (float)Math.sqrt(x * x + y * y);
+        return (float) sqrt(x * x + y * y);
     }
     
     /** @return (float): angle in standard trigonometrical system, in radians */
@@ -260,5 +263,9 @@ public final class Vector implements Serializable {
     public String toString() {
         return "(" + x + "," + y + ")";
     }
-    
+
+    static public double distance (Vector a, Vector b)
+    {
+        return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));
+    }
 }
