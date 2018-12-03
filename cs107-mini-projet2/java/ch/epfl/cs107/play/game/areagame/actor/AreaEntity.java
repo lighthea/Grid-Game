@@ -6,14 +6,38 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.game.actor.Entity;
 import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
+import ch.epfl.cs107.play.math.Vector;
 
 
 /**
  * Actors leaving in a grid
  */
-public abstract class AreaEntity extends Entity {
+public abstract class AreaEntity extends Entity implements Interactable {
 
-    // TODO implements me #PROJECT #TUTO
+    public Area getOwnerArea() {
+        return ownerArea;
+    }
+
+    public void setOwnerArea(Area ownerArea) {
+        this.ownerArea = ownerArea;
+    }
+
+    /// an AreaEntity knows its own Area
+    private Area ownerArea;
+
+    protected Orientation getOrientation() {
+        return orientation;
+    }
+
+    protected void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
+    }
+
+    // / Orientation of the AreaEntity in the Area
+    private Orientation orientation;
+
+    // / Coordinate of the main Cell linked to the entity
+    private DiscreteCoordinates currentMainCellCoordinates;
 
     /**
      * Default AreaEntity constructor
@@ -24,17 +48,25 @@ public abstract class AreaEntity extends Entity {
     public AreaEntity(Area area, Orientation orientation, DiscreteCoordinates position) {
 
         super(position.toVector());
-        // TODO implements me #PROJECT #TUTO
-    }
+        this.ownerArea = area;
+        this.orientation = orientation;
+        this.setCurrentPosition(position.toVector());
 
+
+    }
+    public void setCurrentPosition(Vector v){
+        v.round();
+        this.currentMainCellCoordinates = new DiscreteCoordinates((int)v.x,(int)v.y);
+        super.setCurrentPosition(v);
+    }
 
     /**
      * Getter for the coordinates of the main cell occupied by the AreaEntity
      * @return (DiscreteCoordinates)
      */
     protected DiscreteCoordinates getCurrentMainCellCoordinates(){
-        // TODO implements me #PROJECT #TUTO
-        return null;
+
+        return this.currentMainCellCoordinates;
     }
 
 }

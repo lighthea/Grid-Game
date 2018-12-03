@@ -24,7 +24,8 @@ public class Background extends Entity {
      */
     public Background(Area area) {
         super(DiscreteCoordinates.ORIGIN.toVector());
-        sprite = new ImageGraphics(ResourcePath.getBackgrounds(area.getTitle()), area.getWidth(), area.getHeight(), null, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
+        sprite = new ImageGraphics(ResourcePath.getBackgrounds(area.getTitle()), area.getWidth(), area.getHeight(),
+                null, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
         sprite.setParent(this);
     }
 

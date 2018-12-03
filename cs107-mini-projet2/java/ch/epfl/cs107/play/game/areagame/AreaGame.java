@@ -1,8 +1,14 @@
 package ch.epfl.cs107.play.game.areagame;
 
 import ch.epfl.cs107.play.game.Game;
+import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.window.Window;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -11,15 +17,22 @@ import ch.epfl.cs107.play.window.Window;
  */
 abstract public class AreaGame implements Game {
 
-    // Context objects
-    // TODO implements me #PROJECT #TUTO
+    private Window window;
+    private FileSystem fileSystem;
+    private Map<String, Area> areas;
+
+    public Area getCurrentArea() {
+        return currentArea;
+    }
+
+    private Area currentArea;
 
     /**
      * Add an Area to the AreaGame list
      * @param a (Area): The area to add, not null
      */
     protected final void addArea(Area a){
-        // TODO implements me #PROJECT #TUTO
+        areas.put(a.getTitle(), a);
     }
 
     /**
@@ -30,8 +43,20 @@ abstract public class AreaGame implements Game {
      * @return (Area): after setting it, return the new current area
      */
     protected final Area setCurrentArea(String key, boolean forceBegin){
-        // TODO implements me #PROJECT #TUTO
-        return null;
+        assert this.areas.get(key) != null;
+
+        if (this.currentArea != null)
+            this.currentArea.suspend();
+
+        this.currentArea = this.areas.get(key);
+
+        if (forceBegin || !this.areas.get(key).isUsed())
+            this.areas.get(key).begin(this.window, this.fileSystem);
+
+        else
+            this.areas.get(key).resume(this.window, this.fileSystem);
+
+        return this.areas.get(key);
     }
 
 
@@ -52,14 +77,18 @@ abstract public class AreaGame implements Game {
 
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
-        // TODO implements me #PROJECT #TUTO
+
+        this.areas = new HashMap<>();
+        this.window = window;
+        this.fileSystem = fileSystem;
+
         return true;
     }
 
 
     @Override
     public void update(float deltaTime) {
-        // TODO implements me #PROJECT #TUTO
+       this.currentArea.update(deltaTime);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Demo implements Game {
     }
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
-        actor1 = new GraphicsEntity(Vector.ZERO,new ShapeGraphics(new Circle(0.1f),null, Color.RED, 0.005f));
+        actor1 = new GraphicsEntity(Vector.ZERO, new ShapeGraphics(new Circle(0.1f),null, Color.RED, 0.005f));
         this.window = window;
         this.fileSystem = fileSystem;
 
