@@ -46,7 +46,13 @@ public abstract class AreaBehavior {
         boolean b = true;
         for (int i = 0; i < entity.getCurrentCells().size(); ++i)
         {
-            b = b && coordinates.get(i).x < getWidth() && coordinates.get(i).y < getHeight();
+            b = b && coordinates.get(i).x < getWidth() &&
+                    coordinates.get(i).y  < getHeight() &&
+                    coordinates.get(i).x  > -2 &&
+                    coordinates.get(i).y  > -2 ;
+
+            if (b)
+                b = b && coordToCell(coordinates.get(i)).canEnter(entity);
         }
         return b;
     }
@@ -55,12 +61,11 @@ public abstract class AreaBehavior {
         for (DiscreteCoordinates coord : coordinates)
                 coordToCell(coord).addInteractable(entity);
     }
-
     protected void enter(Interactable entity, List<DiscreteCoordinates> coordinates){
-
         for (DiscreteCoordinates coord : coordinates)
             coordToCell(coord).removeInteractable(entity);
     }
+
     public Cell coordToCell (DiscreteCoordinates coord){
         return this.cells[coord.x][coord.y];
     }

@@ -63,14 +63,9 @@ public abstract class MovableAreaEntity extends AreaEntity {
   
     protected  boolean move(int frameForMove){
 
-        if (this.isMoving || targetMainCellCoordinates != this.getCurrentMainCellCoordinates()) {
-            if (this.getOwnerArea().vetoFromGrid(this, this.getEnteringCells())) {
-                return false;
-            }
-        }
-        else if (!this.isMoving )
+        if (!this.isMoving && !this.getOwnerArea().vetoFromGrid(this, this.getEnteringCells()))
         {
-            System.out.println("Mooooooooooving !");
+            System.out.println("Monologuing !");
             this.framesForCurrentMove = frameForMove;
             Vector orientation = getOrientation().toVector();
             targetMainCellCoordinates = getCurrentMainCellCoordinates().jump(orientation);
@@ -87,7 +82,7 @@ public abstract class MovableAreaEntity extends AreaEntity {
     public void update(float deltaTime) {
 
         if(isMoving && ((targetMainCellCoordinates.x != this.getCurrentMainCellCoordinates().x) ||
-                (targetMainCellCoordinates.y != this.getCurrentMainCellCoordinates().y))) {
+                        (targetMainCellCoordinates.y != this.getCurrentMainCellCoordinates().y))){
 
             Vector distance = getOrientation().toVector();
             distance = distance.mul(1.0f / framesForCurrentMove);

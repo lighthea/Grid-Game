@@ -80,6 +80,13 @@ public class Demo2Behavior extends AreaBehavior {
 
         @Override
         public boolean canLeave (Interactable entity) { return true;}
+        @Override
+        public boolean canEnter (Interactable entity) {
+            if (this.nature.type == -16777216 || this.nature.type == -16776961 || this.nature.type == 0)
+            {System.out.println(Demo2CellType.toType(nature.type).toString());
+                return false;}
+            return true;
+        }
 
         @Override
         public boolean isCellInteractable() {

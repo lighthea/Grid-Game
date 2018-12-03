@@ -37,7 +37,7 @@ public abstract class Area implements Playable {
     // actor on which the view is centered
     private Actor viewCandidate;
 
-    private Map<Interactable , List <DiscreteCoordinates >>interactablesToEnter ;
+    private Map<Interactable , List <DiscreteCoordinates >> interactablesToEnter ;
     private Map<Interactable , List <DiscreteCoordinates >> interactablesToLeave ;
 
     // effective center of the view
