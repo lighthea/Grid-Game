@@ -18,6 +18,9 @@ public class Demo2Player extends MovableAreaEntity {
     private boolean isThroughDoor;
 
     private final static int ANIMATION_DURATION = 8 ;
+    private boolean canMove(){
+        return true;
+    }
 
     @Override
     public void draw(Canvas canvas) {
@@ -52,16 +55,6 @@ public class Demo2Player extends MovableAreaEntity {
 
 
     }
-
-    private void displacement (boolean pressed, Orientation o)
-    {
-        if (pressed) {
-            if (this.getOrientation() == o)
-                move(ANIMATION_DURATION);
-
-            setOrientation(o);
-        }
-    }
     public boolean getisThroughDoor() {
         return isThroughDoor;
     }
@@ -75,16 +68,35 @@ public class Demo2Player extends MovableAreaEntity {
         Button leftArrow = key.get(Keyboard.LEFT) ;
         Button rightArrow = key.get(Keyboard.RIGHT) ;
 
-        displacement(downArrow.isDown(), Orientation.valueOf("DOWN"));
-        displacement(upArrow.isDown(),  Orientation.valueOf("UP"));
-        displacement(leftArrow.isDown(), Orientation.valueOf("LEFT"));
-        displacement(rightArrow.isDown(), Orientation.valueOf("RIGHT"));
+        if(!isMoving && canMove()) {
+            if (downArrow.isDown())
+                if(getOrientation().equals(Orientation.DOWN))
+                    move(ANIMATION_DURATION);
+                else
+                    setOrientation(Orientation.DOWN);
 
 
+            else if (upArrow.isDown())
+                if(getOrientation().equals(Orientation.UP))
+                    move(ANIMATION_DURATION);
+                else
+                    setOrientation(Orientation.UP);
+
+            else if (leftArrow.isDown())
+                if(getOrientation().equals(Orientation.LEFT))
+                    move(ANIMATION_DURATION);
+                else
+                    setOrientation(Orientation.LEFT);
+
+            else if (rightArrow.isDown())
+                if(getOrientation().equals(Orientation.RIGHT))
+                    move(ANIMATION_DURATION);
+                else
+                    setOrientation(Orientation.RIGHT);
+        }
     }
     @Override
     protected  boolean move(int frameForMove){
-
        /*if (getEnteringCells().forEach((i) -> getOwnerArea().getAreaBehavior().getCells()[i.x][i.y] == "DOOR"))
            isThroughDoor = true;*/
        return super.move(frameForMove);

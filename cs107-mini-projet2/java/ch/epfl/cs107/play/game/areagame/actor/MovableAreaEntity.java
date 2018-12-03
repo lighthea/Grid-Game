@@ -17,13 +17,8 @@ import java.util.List;
  */
 public abstract class MovableAreaEntity extends AreaEntity {
     /// Indicate if the actor is currently moving
-    private boolean isMoving;
+    protected boolean isMoving;
     private int framesForCurrentMove;
-
-    public void setTargetMainCellCoordinates(DiscreteCoordinates targetMainCellCoordinates) {
-        this.targetMainCellCoordinates = targetMainCellCoordinates;
-    }
-
     private DiscreteCoordinates targetMainCellCoordinates;
     private List<DiscreteCoordinates> currentCells;
 
@@ -67,16 +62,22 @@ public abstract class MovableAreaEntity extends AreaEntity {
      */
   
     protected  boolean move(int frameForMove){
-        if (this.isMoving || targetMainCellCoordinates != this.getCurrentMainCellCoordinates())
-            if (this.getOwnerArea().vetoFromGrid(this, this.getEnteringCells())) {
 
+        if (this.isMoving || targetMainCellCoordinates != this.getCurrentMainCellCoordinates()) {
+            if (this.getOwnerArea().vetoFromGrid(this, this.getEnteringCells())) {
                 return false;
             }
-        this.framesForCurrentMove = frameForMove;
-        Vector orientation = getOrientation().toVector();
-        targetMainCellCoordinates = getCurrentMainCellCoordinates().jump(orientation);
-        isMoving = true;
-        return true;
+        }
+        else if (!this.isMoving )
+        {
+            System.out.println("Mooooooooooving !");
+            this.framesForCurrentMove = frameForMove;
+            Vector orientation = getOrientation().toVector();
+            targetMainCellCoordinates = getCurrentMainCellCoordinates().jump(orientation);
+            isMoving = true;
+            return true;
+        }
+        return false;
     }
 
 
@@ -84,7 +85,10 @@ public abstract class MovableAreaEntity extends AreaEntity {
 
     @Override
     public void update(float deltaTime) {
-        if(isMoving && targetMainCellCoordinates != this.getCurrentMainCellCoordinates()) {
+
+        if(isMoving && ((targetMainCellCoordinates.x != this.getCurrentMainCellCoordinates().x) ||
+                (targetMainCellCoordinates.y != this.getCurrentMainCellCoordinates().y))) {
+
             Vector distance = getOrientation().toVector();
             distance = distance.mul(1.0f / framesForCurrentMove);
             setCurrentPosition(getPosition().add(distance));

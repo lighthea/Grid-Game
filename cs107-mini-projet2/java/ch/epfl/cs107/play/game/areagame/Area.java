@@ -254,7 +254,7 @@ public abstract class Area implements Playable {
     }
 
     public boolean vetoFromGrid(Interactable entity , List <DiscreteCoordinates> coordinates){
-        return !this.areaBehavior.canLeave(entity, entity.getCurrentCells()) && this.areaBehavior.canEnter(entity, coordinates);
+        return !(this.areaBehavior.canLeave(entity, entity.getCurrentCells()) && this.areaBehavior.canEnter(entity, coordinates));
     }
 
     private void updateCamera () {
@@ -270,7 +270,6 @@ public abstract class Area implements Playable {
      */
     public void suspend(){
         purgeRegistration();
-
     }
 
     public final void setViewCandidate(Actor a){ this.viewCandidate = a; }
