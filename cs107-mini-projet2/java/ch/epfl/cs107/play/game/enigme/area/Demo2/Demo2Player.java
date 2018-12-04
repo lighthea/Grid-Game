@@ -15,6 +15,15 @@ import java.util.List;
 public class Demo2Player extends MovableAreaEntity {
 
     private Sprite sprite;
+
+    public boolean isThroughDoor() {
+        return isThroughDoor;
+    }
+
+    public void setThroughDoor(boolean throughDoor) {
+        isThroughDoor = throughDoor;
+    }
+
     private boolean isThroughDoor;
 
     private final static int ANIMATION_DURATION = 8 ;
@@ -48,9 +57,11 @@ public class Demo2Player extends MovableAreaEntity {
     }
     public void enterArea(Area area , DiscreteCoordinates position){
 
-        area.registerActor(this);
-        this.resetMotion();
         this.getOwnerArea().unregisterActor(this);
+
+        area.registerActor(this);
+        this.setCurrentPosition(position.toVector());
+        this.resetMotion();
         this.setOwnerArea(area);
 
 
@@ -97,8 +108,6 @@ public class Demo2Player extends MovableAreaEntity {
     }
     @Override
     protected  boolean move(int frameForMove){
-       /*if (getEnteringCells().forEach((i) -> getOwnerArea().getAreaBehavior().getCells()[i.x][i.y] == "DOOR"))
-           isThroughDoor = true;*/
        return super.move(frameForMove);
     }
 

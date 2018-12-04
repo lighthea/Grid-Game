@@ -10,8 +10,8 @@ import ch.epfl.cs107.play.game.enigme.Demo2Behavior;
 public class Room0 extends Area {
 
     public int getScaleFactor() {
-        return scaleFactor;
-    }
+    return scaleFactor;
+}
 
     public void setScaleFactor(int scaleFactor) {
         this.scaleFactor = scaleFactor;

@@ -212,7 +212,7 @@ public abstract class Area implements Playable {
         purgeRegistration();
         if (this.actors.parallelStream() != null){
             this.actors.parallelStream().forEach((i) -> i.update(deltaTime));
-            this.actors.parallelStream().forEach((i) -> i.draw(this.window));
+            this.actors.stream().forEach((i) -> i.draw(this.window));
         }
         this.updateCamera();
 
