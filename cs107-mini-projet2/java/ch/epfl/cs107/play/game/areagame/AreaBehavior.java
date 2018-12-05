@@ -1,6 +1,4 @@
 package ch.epfl.cs107.play.game.areagame;
-
-import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 import ch.epfl.cs107.play.game.areagame.io.ResourcePath;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
@@ -51,19 +49,20 @@ public abstract class AreaBehavior {
                     coordinates.get(i).x  > -2 &&
                     coordinates.get(i).y  > -2 ;
 
-            if (b)
+            if (b) {
                 b = b && coordToCell(coordinates.get(i)).canEnter(entity);
+            } else {return false;}
         }
         return b;
     }
 
     protected void leave(Interactable entity, List<DiscreteCoordinates> coordinates){
         for (DiscreteCoordinates coord : coordinates)
-                coordToCell(coord).addInteractable(entity);
+                coordToCell(coord).removeInteractable(entity);
     }
     protected void enter(Interactable entity, List<DiscreteCoordinates> coordinates){
         for (DiscreteCoordinates coord : coordinates)
-            coordToCell(coord).removeInteractable(entity);
+            coordToCell(coord).addInteractable(entity);
     }
 
     public Cell coordToCell (DiscreteCoordinates coord){
@@ -104,6 +103,13 @@ public abstract class AreaBehavior {
         }
 
         public boolean canEnter(Interactable entity){
+            for (Interactable i :
+                    interactableList) {
+                if (i.takeCellSpace()){
+                    System.out.println("BLOCK");
+                    return false;}
+            }
+
             return true;
         }
 

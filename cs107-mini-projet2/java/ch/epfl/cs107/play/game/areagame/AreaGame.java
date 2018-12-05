@@ -1,13 +1,10 @@
 package ch.epfl.cs107.play.game.areagame;
 
 import ch.epfl.cs107.play.game.Game;
-import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.window.Window;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 
@@ -19,7 +16,7 @@ abstract public class AreaGame implements Game {
 
     private Window window;
     private FileSystem fileSystem;
-    private Map<String, Area> areas;
+    protected Map<String, Area> areas;
 
     public Area getCurrentArea() {
         return currentArea;

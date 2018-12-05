@@ -1,6 +1,5 @@
 package ch.epfl.cs107.play.game.enigme;
 
-import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.game.areagame.AreaGame;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.area.Demo2.Demo2Player;
@@ -8,7 +7,6 @@ import ch.epfl.cs107.play.game.enigme.area.Demo2.Room0;
 import ch.epfl.cs107.play.game.enigme.area.Demo2.Room1;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
-import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
 
 public class Demo2 extends AreaGame {
@@ -23,10 +21,19 @@ public class Demo2 extends AreaGame {
         super.update(deltaTime);
         if (player.isThroughDoor())
         {
-            setCurrentArea("Level1", true);
-            player.enterArea(getCurrentArea(), new DiscreteCoordinates(5,5));
-            player.setThroughDoor(false);
-            this.getCurrentArea().setViewCandidate(player);
+            if (getCurrentArea().getTitle() == "LevelSelector") {
+                setCurrentArea("Level1", true);
+                player.enterArea(getCurrentArea(), new DiscreteCoordinates(5,5));
+                player.setThroughDoor(false);
+                this.getCurrentArea().setViewCandidate(player);
+                return;
+            }
+            if (getCurrentArea().getTitle() == "Level1") {
+                setCurrentArea("LevelSelector", true);
+                player.enterArea(getCurrentArea(), new DiscreteCoordinates(5, 5));
+                player.setThroughDoor(false);
+                this.getCurrentArea().setViewCandidate(player);
+            }
         }
 
     }

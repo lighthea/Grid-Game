@@ -42,7 +42,6 @@ public abstract class MovableAreaEntity extends AreaEntity {
      */
     public MovableAreaEntity(Area area, Orientation orientation, DiscreteCoordinates position) {
         super(area, orientation, position);
-        getCurrentMainCellCoordinates();
         resetMotion();
     }
 
@@ -89,6 +88,7 @@ public abstract class MovableAreaEntity extends AreaEntity {
             setCurrentPosition(getPosition().add(distance));
 
         } else{
+            this.setCurrentPosition(getCurrentMainCellCoordinates().toVector());
             resetMotion();
         }
     }

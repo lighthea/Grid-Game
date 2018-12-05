@@ -2,40 +2,42 @@ package ch.epfl.cs107.play.game.enigme;
 
 import ch.epfl.cs107.play.game.areagame.AreaBehavior;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
-import ch.epfl.cs107.play.game.enigme.area.Demo2.Demo2Player;
 import ch.epfl.cs107.play.window.Window;
-public class Demo2Behavior extends AreaBehavior {
+
+public class EnigmeBehaviour extends AreaBehavior {
+
     /**
      * Default AreaBehavior Constructor
      *
      * @param window   (Window): graphic context, not null
      * @param fileName (String): name of the file containing the behavior image, not null
      */
-    public Demo2Behavior(Window window, String fileName) {
-
+    public EnigmeBehaviour(Window window, String fileName) {
         super(window, fileName);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
-                cells[j][i] = new Demo2Cell(i, j, Demo2CellType.toType(getBehaviorMap().getRGB(getHeight() - 1 - i, j)));
+                cells[j][i] = new Demo2Cell(i, j, EnigmeCellType.toType(getBehaviorMap().getRGB(getHeight() - 1 - i, j)));
             }
         }
     }
-    public enum Demo2CellType {
+    public enum EnigmeCellType {
         NULL(0),
         WALL(-16777216), // RGB code of black
-        DOOR(-65536), // RGB code of red
         WATER(-16776961), // RGB code of blue
         INDOOR_WALKABLE(-1),
+        DOOR(-65536), // RGB code of red
         OUTDOOR_WALKABLE(-14112955);
 
         final int type;
 
-        static Demo2CellType toType(int type) {
+        static EnigmeCellType toType(int type) {
             switch (type) {
                 case -16777216:
                     return WALL;
                 case -65536:
                     return DOOR;
+                case -2:
+                    return NULL;//Because the linter was mad about copy pasting...
                 case -1:
                     return INDOOR_WALKABLE;
                 case -14112955:
@@ -44,11 +46,10 @@ public class Demo2Behavior extends AreaBehavior {
                     return WATER;
                 default:
                     return NULL;
-
             }
         }
 
-        Demo2CellType(int type) {
+        EnigmeCellType(int type) {
             this.type = type;
         }
     }
@@ -57,12 +58,12 @@ public class Demo2Behavior extends AreaBehavior {
 
     public class Demo2Cell extends AreaBehavior.Cell {
 
-        private Demo2CellType nature;
-        public Demo2CellType getNature(){
+        private EnigmeCellType nature;
+        public EnigmeCellType getNature(){
             return nature;
         }
 
-        public Demo2Cell(int x, int y, Demo2CellType type) {
+        public Demo2Cell(int x, int y, EnigmeCellType type) {
             super(x, y);
             this.nature = type;
         }
@@ -81,18 +82,15 @@ public class Demo2Behavior extends AreaBehavior {
         public boolean canLeave (Interactable entity) { return true;}
         @Override
         public boolean canEnter (Interactable entity) {
-            if ((this.nature.type == -16777216 || this.nature.type == -16776961 || this.nature.type == 0 )&& !super.canEnter(entity)) {
-                System.out.println(Demo2CellType.toType(nature.type).toString());
-                return false;
-            } else if (this.nature.type == -65536){
-                if (entity instanceof Demo2Player) {
-                    ((Demo2Player) entity).setThroughDoor(true);
-                    return true;
+            if (super.canEnter(entity)) {
+                if ((this.nature.type == -16777216 || this.nature.type == -16776961 || this.nature.type == 0)) {
+                    System.out.println(EnigmeCellType.toType(nature.type).toString());
+                    return false;
                 }
-                return false;
+                System.out.println(EnigmeCellType.toType(nature.type).toString());
+                return true;
             }
-            System.out.println(Demo2CellType.toType(nature.type).toString());
-            return true;
+            return false;
         }
 
         @Override
@@ -101,3 +99,4 @@ public class Demo2Behavior extends AreaBehavior {
         }
     }
 }
+
