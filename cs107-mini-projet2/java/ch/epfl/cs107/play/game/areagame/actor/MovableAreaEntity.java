@@ -52,6 +52,7 @@ public abstract class MovableAreaEntity extends AreaEntity {
         this.isMoving = false;
         this.framesForCurrentMove = 0;
         this.targetMainCellCoordinates = this.getCurrentMainCellCoordinates();
+        this.setCurrentPosition(getCurrentMainCellCoordinates().toVector());
     }
 
     /**
@@ -82,13 +83,13 @@ public abstract class MovableAreaEntity extends AreaEntity {
 
         if(isMoving && ((targetMainCellCoordinates.x != this.getCurrentMainCellCoordinates().x) ||
                         (targetMainCellCoordinates.y != this.getCurrentMainCellCoordinates().y))){
-
+            getOwnerArea().enterAreaCells(this, getEnteringCells());
+            getOwnerArea().leaveAreaCells(this, getLeavingCells());
             Vector distance = getOrientation().toVector();
             distance = distance.mul(1.0f / framesForCurrentMove);
             setCurrentPosition(getPosition().add(distance));
 
         } else{
-            this.setCurrentPosition(getCurrentMainCellCoordinates().toVector());
             resetMotion();
         }
     }

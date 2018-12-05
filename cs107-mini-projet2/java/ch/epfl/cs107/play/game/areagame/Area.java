@@ -3,6 +3,7 @@ package ch.epfl.cs107.play.game.areagame;
 import ch.epfl.cs107.play.game.Playable;
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.areagame.actor.Interactor;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Transform;
@@ -26,6 +27,7 @@ public abstract class Area implements Playable {
     private FileSystem fileSystem;
     // List of Actors inside the area
     private List<Actor> actors;
+    private List<Interactor> interactors;
 
     private List<Actor> registeredActors;
     private List<Actor> unregisteredActors;
@@ -75,8 +77,11 @@ public abstract class Area implements Playable {
         try {
             if(a instanceof Interactable)
                 enterAreaCells(((Interactable)a), ((Interactable) a).getCurrentCells()) ;
-            this.actors.add(a);
 
+            if(a instanceof  Interactor){
+             this.interactors.add((Interactor)a);
+            }
+            this.actors.add(a);
         } catch (Exception E){
             if(!forced) {
                 System.out.println("Error : "+ E);
@@ -102,6 +107,9 @@ public abstract class Area implements Playable {
             try {
                 if(a instanceof Interactable)
                     leaveAreaCells(((Interactable)a), ((Interactable) a).getCurrentCells()) ;
+                if(a instanceof  Interactor){
+                    this.interactors.remove(a);
+                }
                 this.actors.remove(a);
             } catch (Exception E) {
             if (!forced)
@@ -190,6 +198,8 @@ public abstract class Area implements Playable {
 
         this.interactablesToEnter = new HashMap<>();
         this.interactablesToLeave = new HashMap<>();
+        this.interactors = new LinkedList<>();
+
         this.isUsed = true;
         return true;
     }
@@ -207,9 +217,29 @@ public abstract class Area implements Playable {
     @Override
     public void update(float deltaTime) {
         purgeRegistration();
-        if (this.actors.parallelStream() != null){
+        if (this.actors != null){
             this.actors.parallelStream().forEach((i) -> i.update(deltaTime));
             this.actors.stream().forEach((i) -> i.draw(this.window));
+
+        }
+        for(Interactor interactor  : interactors) {
+            if(interactor.wantsCellInteraction()) {
+                //demanderàlagrilledemettreenplacelesinteractionsdecontact
+                }
+            if(interactor.wantsViewInteraction()) {
+                    // demanderàlagrilledemettreenplacelesinteractiondistantes
+            }
+            }
+
+        if (interactors != null)
+        {
+            for (Interactor interactor :
+                    interactors) {
+                if (interactor.wantsCellInteraction())
+                    return;
+                if (interactor.wantsViewInteraction())
+                    return;
+            }
         }
         this.updateCamera();
 
@@ -228,12 +258,12 @@ public abstract class Area implements Playable {
     }
     private void purgeRegistration() {
             if (this.registeredActors != null){
-                this.registeredActors.stream().forEach((i) -> this.addActor(i, false));
+                this.registeredActors.parallelStream().forEach((i) -> this.addActor(i, false));
                 this.registeredActors.clear();
             }
 
             if (this.unregisteredActors != null){
-                this.unregisteredActors.stream().forEach((i) -> this.addActor(i, false));
+                this.unregisteredActors.parallelStream().forEach((i) -> this.addActor(i, false));
                 this.unregisteredActors.clear();
             }
 
@@ -248,6 +278,8 @@ public abstract class Area implements Playable {
                     this.areaBehavior.enter(key, this.interactablesToEnter.get(key));
                 }
             }
+
+
     }
 
     public boolean vetoFromGrid(Interactable entity , List <DiscreteCoordinates> coordinates){

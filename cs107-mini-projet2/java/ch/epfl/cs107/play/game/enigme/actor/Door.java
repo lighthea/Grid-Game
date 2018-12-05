@@ -11,6 +11,14 @@ import java.util.List;
 
 public class Door extends AreaEntity {
 
+    public String getDestinationArea() {
+        return DestinationArea;
+    }
+
+    public DiscreteCoordinates getLandingCoordinates() {
+        return landingCoordinates;
+    }
+
     private String DestinationArea;
     private DiscreteCoordinates landingCoordinates;
     private List<DiscreteCoordinates> currentCells;
@@ -39,7 +47,7 @@ public class Door extends AreaEntity {
 
     @Override
     public boolean takeCellSpace() {
-        return true;
+        return false;
     }
 
     @Override

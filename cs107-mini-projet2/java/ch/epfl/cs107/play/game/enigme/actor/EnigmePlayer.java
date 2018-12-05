@@ -20,10 +20,8 @@ public class EnigmePlayer extends MovableAreaEntity {
         return isPassingDoor;
     }
 
-    public void setPassingDoor(Door door) {
-        isPassingDoor = true;
-        lastDoor = door;
-
+    public void setPassingDoor(boolean b) {
+        isPassingDoor = b;
     }
 
     private boolean isPassingDoor;
@@ -38,7 +36,7 @@ public class EnigmePlayer extends MovableAreaEntity {
     public EnigmePlayer(Area area, Orientation orientation, DiscreteCoordinates position) {
         super(area, orientation, position);
         this.setOrientation(Orientation.valueOf("DOWN"));
-        this.sprite = new Sprite("old.man.1", 1, 1.f,this) ;
+        this.sprite = new Sprite("ghost.1", 1, 1.f,this) ;
         this.isPassingDoor = false;
     }
 
@@ -79,40 +77,74 @@ public class EnigmePlayer extends MovableAreaEntity {
 
     @Override
     public void update (float deltaTime){
-        super.update(deltaTime);
-
         Keyboard key = getOwnerArea().getKeyboard();
+
         Button downArrow = key.get(Keyboard.DOWN) ;
         Button upArrow = key.get(Keyboard.UP) ;
         Button leftArrow = key.get(Keyboard.LEFT) ;
         Button rightArrow = key.get(Keyboard.RIGHT) ;
 
         if(!isMoving) {
-            if (downArrow.isDown())
-                if(getOrientation().equals(Orientation.DOWN))
+            if (downArrow.isDown()) {
+                if (getOrientation().equals(Orientation.DOWN)) {
                     this.move(ANIMATION_DURATION);
-                else
+                    return;
+                } else {
                     setOrientation(Orientation.DOWN);
+                    return;
+                }
+            }
 
-
-            else if (upArrow.isDown())
-                if(getOrientation().equals(Orientation.UP))
+            else if (upArrow.isDown()) {
+                if (getOrientation().equals(Orientation.UP)) {
                     this.move(ANIMATION_DURATION);
-                else
+                    return;
+                }
+                else {
                     setOrientation(Orientation.UP);
-
-            else if (leftArrow.isDown())
-                if(getOrientation().equals(Orientation.LEFT))
+                    return;
+                }
+            }
+            else if (leftArrow.isDown()) {
+                if (getOrientation().equals(Orientation.LEFT)) {
                     this.move(ANIMATION_DURATION);
-                else
+                    return;
+                } else {
                     setOrientation(Orientation.LEFT);
-
-            else if (rightArrow.isDown())
-                if(getOrientation().equals(Orientation.RIGHT))
+                    return;
+                }
+            }
+            else if (rightArrow.isDown()) {
+                if (getOrientation().equals(Orientation.RIGHT)) {
                     this.move(ANIMATION_DURATION);
-                else
+                    return;
+                }
+                else {
                     setOrientation(Orientation.RIGHT);
+                    return;
+                }
+            }
         }
+
+        super.update(deltaTime);
     }
 
+    public Door getLastDoor() {
+        return lastDoor;
+    }
+
+    public void setLastDoor(Door lastDoor) {
+        this.lastDoor = lastDoor;
+    }
+
+    private class EnigmePlayerHandler {
+
+        public void interactWith(Door door) {
+
+        }
+
+        public void interactWith(Apple apple) {
+
+        }
+    }
 }

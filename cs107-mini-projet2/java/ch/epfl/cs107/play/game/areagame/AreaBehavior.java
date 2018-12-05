@@ -1,5 +1,6 @@
 package ch.epfl.cs107.play.game.areagame;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.areagame.actor.Interactor;
 import ch.epfl.cs107.play.game.areagame.io.ResourcePath;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Image;
@@ -30,6 +31,17 @@ public abstract class AreaBehavior {
     public Cell[][] getCells() {
         return cells;
     }
+
+
+
+    public void cellInteractionOf(Interactor interactor){
+        interactor.getCurrentCells().forEach((i) -> coordToCell(i).cellInteractionOf(interactor));
+    }
+
+    public void viewInteractionOf(Interactor interactor){
+        interactor.getCurrentCells().forEach((i) -> coordToCell(i).cellInteractionOf(interactor));}
+
+
 
     public boolean canLeave(Interactable entity, List<DiscreteCoordinates>coordinates){
         boolean b = true;
@@ -106,7 +118,6 @@ public abstract class AreaBehavior {
             for (Interactable i :
                     interactableList) {
                 if (i.takeCellSpace()){
-                    System.out.println("BLOCK");
                     return false;}
             }
 
@@ -126,6 +137,16 @@ public abstract class AreaBehavior {
         public List<DiscreteCoordinates> getCurrentCells(){
 
             return new ArrayList<>(Arrays.asList(this.getCoordinates()));
+        }
+        public void viewInteractionOf(Interactor interactor){
+
+        }
+
+        public void cellInteractionOf(Interactor interactor) {
+            for(Interactable interactable  : interactableList){
+                if(interactable.isCellInteractable())
+                    interactor.interactWith(interactable) ;
+            }
         }
     }
 }

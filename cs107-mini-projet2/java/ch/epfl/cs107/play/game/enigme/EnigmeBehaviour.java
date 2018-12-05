@@ -2,6 +2,8 @@ package ch.epfl.cs107.play.game.enigme;
 
 import ch.epfl.cs107.play.game.areagame.AreaBehavior;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.enigme.actor.Door;
+import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.window.Window;
 
 public class EnigmeBehaviour extends AreaBehavior {
@@ -16,7 +18,7 @@ public class EnigmeBehaviour extends AreaBehavior {
         super(window, fileName);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
-                cells[j][i] = new Demo2Cell(i, j, EnigmeCellType.toType(getBehaviorMap().getRGB(getHeight() - 1 - i, j)));
+                cells[j][i] = new EnigmeCell(i, j, EnigmeCellType.toType(getBehaviorMap().getRGB(getHeight() - 1 - i, j)));
             }
         }
     }
@@ -56,14 +58,14 @@ public class EnigmeBehaviour extends AreaBehavior {
     /// The player is a concept of RPG games
     // TODO implements me #PROJECT
 
-    public class Demo2Cell extends AreaBehavior.Cell {
+    public class EnigmeCell extends AreaBehavior.Cell {
 
         private EnigmeCellType nature;
         public EnigmeCellType getNature(){
             return nature;
         }
 
-        public Demo2Cell(int x, int y, EnigmeCellType type) {
+        public EnigmeCell(int x, int y, EnigmeCellType type) {
             super(x, y);
             this.nature = type;
         }
@@ -86,6 +88,18 @@ public class EnigmeBehaviour extends AreaBehavior {
                 if ((this.nature.type == -16777216 || this.nature.type == -16776961 || this.nature.type == 0)) {
                     System.out.println(EnigmeCellType.toType(nature.type).toString());
                     return false;
+                }
+                if (entity instanceof EnigmePlayer) {
+                    for (Interactable interactables :
+                            getInteractablesList()) {
+                        if (interactables instanceof Door) {
+                            ((EnigmePlayer) entity).setLastDoor(((Door) interactables));
+                            ((EnigmePlayer) entity).setPassingDoor(true);
+                            System.out.println("DOOOOR");
+                            return true;
+                        }
+                    }
+                    return true;
                 }
                 System.out.println(EnigmeCellType.toType(nature.type).toString());
                 return true;

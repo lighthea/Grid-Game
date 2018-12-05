@@ -2,32 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60afc858-7b1f-4323-af8b-9da6cff7ef76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/EnigmeBehaviour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/EnigmePlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/LevelSelector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/signal/logic/And.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/signal/logic/Logic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/signal/logic/LogicSignal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/signal/logic/MultipleAnd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/signal/logic/Not.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/signal/logic/Or.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/cs107-mini-projet2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/cs107-mini-projet2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/Play.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/Play.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Interactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Interactor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/MovableAreaEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/MovableAreaEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2Behavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2Behavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Demo2/Demo2Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Demo2/Demo2Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/EnigmeBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/EnigmeBehaviour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/EnigmePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/EnigmePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cs107-mini-projet2/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,30 +25,30 @@
     <session id="623836630">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="21" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="2" />
-          <entry key="project.open.time.13" value="2" />
-          <entry key="project.open.time.14" value="3" />
-          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.13" value="3" />
+          <entry key="project.open.time.14" value="4" />
+          <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="4" />
-          <entry key="project.open.time.8" value="2" />
+          <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="394" />
+          <entry key="java" value="456" />
           <entry key="png" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="24" />
-          <entry key="JAVA" value="394" />
+          <entry key="JAVA" value="456" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -76,69 +61,101 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="10561" />
-          <entry key="txt" value="114" />
+          <entry key="java" value="11500" />
+          <entry key="txt" value="141" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10561" />
-          <entry key="PLAIN_TEXT" value="114" />
+          <entry key="JAVA" value="11500" />
+          <entry key="PLAIN_TEXT" value="141" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1383#1384#0" expanded="true" />
-                <element signature="e#1402#1403#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/EnigmePlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="448">
+              <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#674#675#0" expanded="true" />
                 <element signature="e#710#711#0" expanded="true" />
-                <element signature="e#1240#1241#0" expanded="true" />
-                <element signature="e#1279#1280#0" expanded="true" />
-                <element signature="method#getCurrentCells#0;class#EnigmePlayer#0" />
+                <element signature="e#755#756#0" expanded="true" />
+                <element signature="e#788#789#0" expanded="true" />
                 <element signature="method#enterArea#0;class#EnigmePlayer#0" />
                 <element signature="method#update#0;class#EnigmePlayer#0" />
+                <element signature="e#3954#3955#0" expanded="true" />
+                <element signature="e#3985#3986#0" expanded="true" />
+                <element signature="e#4031#4032#0" expanded="true" />
+                <element signature="e#4071#4072#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java">
+        <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Interactor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+            <state relative-caret-position="306">
+              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2.java">
+        <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="36" column="9" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="36" selection-end-column="9" />
+            <state relative-caret-position="383">
+              <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#unregisterActor#0;class#Area#0" />
+                <element signature="e#4824#4825#0" expanded="true" />
+                <element signature="e#4882#4883#0" expanded="true" />
+                <element signature="e#5019#5020#0" expanded="true" />
+                <element signature="e#5080#5081#0" expanded="true" />
+                <element signature="method#getKeyboard#0;class#Area#0" />
+                <element signature="e#6343#6344#0" expanded="true" />
+                <element signature="e#6370#6371#0" expanded="true" />
+                <element signature="method#purgeRegistration#0;class#Area#0" />
+                <element signature="e#9692#9693#0" expanded="true" />
+                <element signature="e#9727#9728#0" expanded="true" />
+                <element signature="method#end#0;class#Area#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaBehavior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="147" column="20" selection-start-line="147" selection-start-column="20" selection-end-line="147" selection-end-column="20" />
+              <folding>
+                <element signature="e#609#610#0" expanded="true" />
+                <element signature="e#637#638#0" expanded="true" />
+                <element signature="e#666#667#0" expanded="true" />
+                <element signature="e#695#696#0" expanded="true" />
+                <element signature="method#canLeave#0;class#AreaBehavior#0" />
+                <element signature="method#canEnter#0;class#AreaBehavior#0" />
+                <element signature="method#leave#0;class#AreaBehavior#0" />
+                <element signature="method#enter#0;class#AreaBehavior#0" />
+                <element signature="e#2105#2106#0" expanded="true" />
+                <element signature="e#2156#2157#0" expanded="true" />
+                <element signature="method#canEnter#0;class#Cell#0;class#AreaBehavior#0" />
+                <element signature="method#getCurrentCells#0;class#Cell#0;class#AreaBehavior#0" />
               </folding>
             </state>
           </provider>
@@ -167,6 +184,7 @@
       <find>interactablesToEnter</find>
       <find>isMoving</find>
       <find>reset</find>
+      <find>add</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,18 +223,19 @@
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level1.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level2.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level3.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/LevelSelector.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/EnigmeBehaviour.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/MovableAreaEntity.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaBehavior.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaGame.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2Behavior.java" />
-        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/MovableAreaEntity.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/EnigmeBehaviour.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaBehavior.java" />
+        <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Interactor.java" />
         <option value="$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/EnigmePlayer.java" />
       </list>
     </option>
@@ -239,6 +258,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -293,6 +313,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="play" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="areagame" type="462c0819:PsiDirectoryNode" />
+              <item name="actor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Grid-Game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs107-mini-projet2" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="play" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
               <item name="enigme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -304,51 +333,17 @@
               <item name="enigme" type="462c0819:PsiDirectoryNode" />
               <item name="actor" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Grid-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cs107-mini-projet2" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="play" type="462c0819:PsiDirectoryNode" />
-              <item name="signal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Grid-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cs107-mini-projet2" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="play" type="462c0819:PsiDirectoryNode" />
-              <item name="signal" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Grid-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cs107-mini-projet2" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Grid-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cs107-mini-projet2" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Grid-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cs107-mini-projet2" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="sprites" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543973986225" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544024577482" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/cs107-mini-projet2/res" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -416,6 +411,10 @@
       <workItem from="1543933543388" duration="5534000" />
       <workItem from="1543955445188" duration="18000" />
       <workItem from="1543969215678" duration="4808000" />
+      <workItem from="1543993254125" duration="129000" />
+      <workItem from="1544002895444" duration="185000" />
+      <workItem from="1544003554009" duration="2575000" />
+      <workItem from="1544010841326" duration="9079000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Alex">
       <created>1542541086075</created>
@@ -473,11 +472,25 @@
       <option name="project" value="LOCAL" />
       <updated>1543920537239</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Corrected movement + door">
+      <created>1543993314430</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1543993314430</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Corrected movement + door">
+      <created>1543993354435</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1543993354435</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107774000" />
+    <option name="totallyTimeSpent" value="119742000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -490,18 +503,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.6212339" visible="true" weight="0.16442953" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.6212339" visible="true" weight="0.17248322" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="7" sideWeight="0.37876615" side_tool="true" weight="0.2773925" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4966443" weight="0.22411348" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4966443" visible="true" weight="0.22411348" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798658" weight="0.39432624" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -512,8 +526,9 @@
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49932885" weight="0.32907802" />
       <window_info anchor="bottom" id="Thumbnails" order="12" visible="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -539,24 +554,33 @@
     <MESSAGE value="ghost moves correctly" />
     <MESSAGE value="ghost moves correctly added collision" />
     <MESSAGE value="ghost moves correctly added collision and level changing" />
-    <option name="LAST_COMMIT_MESSAGE" value="ghost moves correctly added collision and level changing" />
+    <MESSAGE value="Corrected movement + door" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected movement + door" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java</url>
-          <line>245</line>
+          <url>file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java</url>
+          <line>37</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="behaviorMap" language="JAVA" />
+        <watch expression="this.registeredActors.get(1)" />
+        <watch expression="this.registeredActors.get(1)" language="JAVA" />
+        <watch expression="this" />
+        <watch expression="this" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="setValue">
@@ -568,36 +592,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_181/src.zip!/java/util/function/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Orientation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/window/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#1378#1379#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/res/images/backgrounds/Level2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/res/images/backgrounds/Level1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/res/images/backgrounds/Level3.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -657,30 +651,10 @@
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/res/images/sprites/ingot.1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/Play.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Level3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Demo2/Demo2Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
         </state>
       </provider>
     </entry>
@@ -688,9 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -698,9 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -708,32 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1652#1653#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/math/DiscreteCoordinates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-          <folding>
-            <element signature="e#2442#2443#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/actor/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#1504#1505#0" expanded="true" />
-            <element signature="e#1542#1543#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,13 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Background.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -762,30 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#333#334#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#653#654#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#753#754#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#begin#0;class#EnigmeArea#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,51 +714,209 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Background.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="e#3132#3133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/actor/ImageGraphics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/window/swing/SwingWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="335" selection-start-line="335" selection-end-line="335" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Orientation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#1417#1418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/math/DiscreteCoordinates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="e#2301#2302#0" expanded="true" />
+            <element signature="e#2403#2404#0" expanded="true" />
+            <element signature="e#2442#2443#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/Demo2/Demo2Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-385">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding>
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2Behavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-980">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/MovableAreaEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="85" column="39" selection-start-line="85" selection-start-column="39" selection-end-line="85" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/AreaEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="209">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="e#518#519#0" expanded="true" />
             <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#898#899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
             <element signature="e#598#599#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#1650#1651#0" expanded="true" />
+            <element signature="e#1677#1678#0" expanded="true" />
+            <element signature="e#1918#1919#0" expanded="true" />
+            <element signature="e#1953#1954#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/EnigmeBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+        <state relative-caret-position="143">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/math/Transform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3015#3016#0" expanded="true" />
-            <element signature="e#3050#3051#0" expanded="true" />
+            <element signature="e#4549#4550#0" expanded="true" />
+            <element signature="e#4584#4585#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/MovableAreaEntity.java">
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/Play.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="51" />
+        <state relative-caret-position="194">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/area/EnigmeArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding>
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/actor/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#1542#1543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+          <folding>
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#2407#2408#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/Area.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        <state relative-caret-position="383">
+          <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#removeActor#0;class#Area#0" />
             <element signature="method#unregisterActor#0;class#Area#0" />
-            <element signature="e#4817#4818#0" expanded="true" />
-            <element signature="e#4875#4876#0" expanded="true" />
+            <element signature="e#4824#4825#0" expanded="true" />
+            <element signature="e#4882#4883#0" expanded="true" />
+            <element signature="e#5019#5020#0" expanded="true" />
+            <element signature="e#5080#5081#0" expanded="true" />
             <element signature="method#getKeyboard#0;class#Area#0" />
-            <element signature="method#begin#0;class#Area#0" />
-            <element signature="method#updateCamera#0;class#Area#0" />
+            <element signature="e#6343#6344#0" expanded="true" />
+            <element signature="e#6370#6371#0" expanded="true" />
+            <element signature="method#purgeRegistration#0;class#Area#0" />
+            <element signature="e#9692#9693#0" expanded="true" />
+            <element signature="e#9727#9728#0" expanded="true" />
             <element signature="method#end#0;class#Area#0" />
           </folding>
         </state>
@@ -855,88 +924,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        <state relative-caret-position="329">
+          <caret line="147" column="20" selection-start-line="147" selection-start-column="20" selection-end-line="147" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="method#canLeave#0;class#AreaBehavior#0" />
+            <element signature="method#canEnter#0;class#AreaBehavior#0" />
+            <element signature="method#leave#0;class#AreaBehavior#0" />
+            <element signature="method#enter#0;class#AreaBehavior#0" />
+            <element signature="e#2105#2106#0" expanded="true" />
+            <element signature="e#2156#2157#0" expanded="true" />
+            <element signature="method#canEnter#0;class#Cell#0;class#AreaBehavior#0" />
+            <element signature="method#getCurrentCells#0;class#Cell#0;class#AreaBehavior#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2Behavior.java">
+    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/actor/Interactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        <state relative-caret-position="306">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Apple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/areagame/AreaGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/Door.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1383#1384#0" expanded="true" />
-            <element signature="e#1402#1403#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Demo2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="36" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/Enigme.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cs107-mini-projet2/java/ch/epfl/cs107/play/game/enigme/actor/EnigmePlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="448">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#674#675#0" expanded="true" />
             <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
-            <element signature="method#getCurrentCells#0;class#EnigmePlayer#0" />
+            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
             <element signature="method#enterArea#0;class#EnigmePlayer#0" />
             <element signature="method#update#0;class#EnigmePlayer#0" />
+            <element signature="e#3954#3955#0" expanded="true" />
+            <element signature="e#3985#3986#0" expanded="true" />
+            <element signature="e#4031#4032#0" expanded="true" />
+            <element signature="e#4071#4072#0" expanded="true" />
           </folding>
         </state>
       </provider>

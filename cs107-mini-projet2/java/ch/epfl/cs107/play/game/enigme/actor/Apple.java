@@ -31,7 +31,7 @@ public class Apple extends AreaEntity {
      */
     public Apple(Area area, Orientation orientation, DiscreteCoordinates position) {
         super(area, orientation, position);
-        sprite = new Sprite("apple.1", .5f, .5f,this);
+        sprite = new Sprite("apple.1", 1, 1,this);
     }
 
     @Override

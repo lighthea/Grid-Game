@@ -31,16 +31,11 @@ public class Enigme extends AreaGame {
     public void update (float deltaTime){
 
         super.update(deltaTime);
-        if (player.isPassingDoor())
-        {
-            player.
-            }
-            if (getCurrentArea().getTitle() == "Level1") {
-                setCurrentArea("LevelSelector", true);
-                player.enterArea(getCurrentArea(), new DiscreteCoordinates(5, 5));
-                player.setThroughDoor(false);
-                this.getCurrentArea().setViewCandidate(player);
-            }
+        if (player.isPassingDoor()) {
+            this.setCurrentArea(player.getLastDoor().getDestinationArea(), false);
+            player.enterArea(getCurrentArea(), player.getLastDoor().getLandingCoordinates());
+            player.setPassingDoor(false);
+            this.getCurrentArea().setViewCandidate(player);
         }
     }
 
@@ -62,8 +57,9 @@ public class Enigme extends AreaGame {
         this.setCurrentArea("LevelSelector", true);
         player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,5));
         apple = new Apple(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,6));
-        List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)), new DiscreteCoordinates(6,8));
-        door = new Door(getCurrentArea(), "Level1",new DiscreteCoordinates(5,5),Orientation.DOWN,
+        List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)));
+
+        door = new Door(getCurrentArea(), "Level1", new DiscreteCoordinates(5,5),Orientation.DOWN,
                 new DiscreteCoordinates(6,7),
                 DoorCoord);
         this.getCurrentArea().registerActor(player);

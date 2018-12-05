@@ -16,7 +16,7 @@ public class EnigmeArea extends Area {
         this.scaleFactor = scaleFactor;
     }
 
-    private int scaleFactor;
+    private int scaleFactor = 11;
 
     public void setViewCenter(Vector viewCenter) {
         this.viewCenter = viewCenter;
