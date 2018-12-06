@@ -1,26 +1,16 @@
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import ch.epfl.cs107.play.game.areagame.Area;
-import ch.epfl.cs107.play.game.areagame.actor.AreaEntity;
-import ch.epfl.cs107.play.game.areagame.actor.Interactable;
-import ch.epfl.cs107.play.game.areagame.actor.Orientation;
-import ch.epfl.cs107.play.game.areagame.actor.Sprite;
+import ch.epfl.cs107.play.game.areagame.actor.*;
+import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Canvas;
 
 import java.util.Collections;
 import java.util.List;
 
-public class Apple extends AreaEntity {
+public class Apple extends AreaEntity implements Collectibles {
     private Sprite sprite;
-    public boolean isCollected() {
-        return isCollected;
-    }
-
-    public void setCollected(boolean collected) {
-        isCollected = collected;
-    }
-
     private boolean isCollected;
     /**
      * Default AreaEntity constructor
@@ -32,6 +22,7 @@ public class Apple extends AreaEntity {
     public Apple(Area area, Orientation orientation, DiscreteCoordinates position) {
         super(area, orientation, position);
         sprite = new Sprite("apple.1", 1, 1,this);
+        isCollected = false;
     }
 
     @Override
@@ -55,9 +46,19 @@ public class Apple extends AreaEntity {
     }
 
     @Override
+    public void acceptInteraction(EnigmeInteractionVisitor v) {
+
+    }
+
+    @Override
     public void draw(Canvas canvas) {
         if (isCollected)
             return;
         sprite.draw(canvas);
+    }
+
+    @Override
+    public void pickup() {
+        isCollected = true;
     }
 }

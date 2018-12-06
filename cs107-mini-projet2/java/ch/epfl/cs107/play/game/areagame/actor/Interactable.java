@@ -1,6 +1,11 @@
 package ch.epfl.cs107.play.game.areagame.actor;
 
 
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
+import ch.epfl.cs107.play.game.enigme.actor.Apple;
+import ch.epfl.cs107.play.game.enigme.actor.Door;
+import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 
 import java.util.ArrayList;
@@ -17,5 +22,5 @@ public interface Interactable {
     boolean isViewInteractable();
     boolean isCellInteractable();
     public List<DiscreteCoordinates> getCurrentCells();
-
+    void acceptInteraction(AreaInteractionVisitor v) ;
 }

@@ -145,7 +145,7 @@ public abstract class AreaBehavior {
         public void cellInteractionOf(Interactor interactor) {
             for(Interactable interactable  : interactableList){
                 if(interactable.isCellInteractable())
-                    interactor.interactWith(interactable) ;
+                    interactable.acceptInteraction();
             }
         }
     }

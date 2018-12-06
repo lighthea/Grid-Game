@@ -1,6 +1,9 @@
 package ch.epfl.cs107.play.game.areagame.actor;
 
 
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.enigme.actor.Apple;
+import ch.epfl.cs107.play.game.enigme.actor.Door;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 
 import java.util.List;
@@ -16,5 +19,5 @@ public interface Interactor {
     boolean wantsCellInteraction();
     boolean wantsViewInteraction();
 
-    void interactWith(Interactable other);
+    void acceptInteraction(AreaInteractionVisitor v) ;
 }

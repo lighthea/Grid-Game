@@ -55,7 +55,7 @@ public class Enigme extends AreaGame {
 
 
         this.setCurrentArea("LevelSelector", true);
-        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,5));
+        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,5), handler);
         apple = new Apple(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,6));
         List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)));
 
