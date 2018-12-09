@@ -1,7 +1,12 @@
 package ch.epfl.cs107.play.game.areagame;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 import ch.epfl.cs107.play.game.areagame.actor.Interactor;
+import ch.epfl.cs107.play.game.areagame.actor.MovableAreaEntity;
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.game.areagame.io.ResourcePath;
+import ch.epfl.cs107.play.game.enigme.Enigme;
+import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Image;
 import ch.epfl.cs107.play.window.Window;
@@ -39,7 +44,8 @@ public abstract class AreaBehavior {
     }
 
     public void viewInteractionOf(Interactor interactor){
-        interactor.getCurrentCells().forEach((i) -> coordToCell(i).cellInteractionOf(interactor));}
+        interactor.getFieldOfViewCells().forEach((i) -> coordToCell(i).viewInteractionOf(interactor));
+    }
 
 
 
@@ -138,14 +144,22 @@ public abstract class AreaBehavior {
 
             return new ArrayList<>(Arrays.asList(this.getCoordinates()));
         }
-        public void viewInteractionOf(Interactor interactor){
 
+        @Override
+        public void acceptInteraction(AreaInteractionVisitor v) {
+            ((EnigmeInteractionVisitor)v).interactWith(this);
+        }
+        public void viewInteractionOf(Interactor interactor){
+            for(Interactable interactable  : interactableList){
+                if(interactable.isViewInteractable())
+                    interactor.interactWith(interactable);
+            }
         }
 
-        public void cellInteractionOf(Interactor interactor) {
+        private void cellInteractionOf(Interactor interactor){
             for(Interactable interactable  : interactableList){
                 if(interactable.isCellInteractable())
-                    interactable.acceptInteraction();
+                    interactor.interactWith(interactable);
             }
         }
     }

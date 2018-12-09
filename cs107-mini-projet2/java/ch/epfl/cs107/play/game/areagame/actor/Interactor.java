@@ -18,6 +18,6 @@ public interface Interactor {
     List<DiscreteCoordinates> getFieldOfViewCells();
     boolean wantsCellInteraction();
     boolean wantsViewInteraction();
-
     void acceptInteraction(AreaInteractionVisitor v) ;
+    void interactWith(Interactable other);
 }

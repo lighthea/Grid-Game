@@ -21,6 +21,6 @@ public interface Interactable {
     boolean takeCellSpace();
     boolean isViewInteractable();
     boolean isCellInteractable();
-    public List<DiscreteCoordinates> getCurrentCells();
+    List<DiscreteCoordinates> getCurrentCells();
     void acceptInteraction(AreaInteractionVisitor v) ;
 }

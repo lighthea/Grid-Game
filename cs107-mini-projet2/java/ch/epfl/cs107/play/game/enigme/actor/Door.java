@@ -4,6 +4,8 @@ import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.game.areagame.actor.AreaEntity;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Canvas;
 
@@ -37,7 +39,7 @@ public class Door extends AreaEntity {
         this.DestinationArea = destination;
         this.landingCoordinates = tpCoordiinate;
         currentCells = otherPositions;
-        this.opened = new Sprite("door.open.1", 1,1, this);
+        this.opened = new Sprite("door.close.1", 1,1, this);
     }
 
     @Override
@@ -63,5 +65,11 @@ public class Door extends AreaEntity {
     @Override
     public List<DiscreteCoordinates> getCurrentCells() {
         return currentCells;
+    }
+
+    @Override
+    public void acceptInteraction(AreaInteractionVisitor v) {
+        this.opened = new Sprite("door.open.1", 1,1, this);
+        ((EnigmeInteractionVisitor)v).interactWith(this);
     }
 }

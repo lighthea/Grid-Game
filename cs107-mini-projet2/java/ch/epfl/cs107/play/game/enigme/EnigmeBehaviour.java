@@ -2,8 +2,13 @@ package ch.epfl.cs107.play.game.enigme;
 
 import ch.epfl.cs107.play.game.areagame.AreaBehavior;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.areagame.actor.Interactor;
+import ch.epfl.cs107.play.game.areagame.actor.MovableAreaEntity;
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.game.enigme.actor.Door;
 import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
+import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Window;
 
 public class EnigmeBehaviour extends AreaBehavior {
@@ -89,18 +94,6 @@ public class EnigmeBehaviour extends AreaBehavior {
                     System.out.println(EnigmeCellType.toType(nature.type).toString());
                     return false;
                 }
-                if (entity instanceof EnigmePlayer) {
-                    for (Interactable interactables :
-                            getInteractablesList()) {
-                        if (interactables instanceof Door) {
-                            ((EnigmePlayer) entity).setLastDoor(((Door) interactables));
-                            ((EnigmePlayer) entity).setPassingDoor(true);
-                            System.out.println("DOOOOR");
-                            return true;
-                        }
-                    }
-                    return true;
-                }
                 System.out.println(EnigmeCellType.toType(nature.type).toString());
                 return true;
             }
@@ -111,6 +104,50 @@ public class EnigmeBehaviour extends AreaBehavior {
         public boolean isCellInteractable() {
             return true;
         }
+
+/*
+        @Override
+        public void viewInteractionOf(Interactor interactor){
+            for(Interactable interactable  : getInteractablesList()){
+                if(interactable.isViewInteractable())
+                    if (interactor instanceof EnigmePlayer) {
+                        interactable.acceptInteraction(((EnigmePlayer) interactor).getHandler());
+                    }
+            }
+        }
+        @Override
+        public void cellInteractionOf(Interactor interactor) {
+            for(Interactable interactable  : getInteractablesList()){
+                if(interactable.isCellInteractable())
+                    if (interactor instanceof EnigmePlayer)
+                        interactable.acceptInteraction(((EnigmePlayer) interactor).getHandler());
+            }
+        }
+
+        public void acceptInteraction2(EnigmePlayer interactor) {
+            for(Interactable interactable  : getInteractablesList()){
+                System.out.println(interactable.getClass().toString());
+                    ((EnigmeInteractionVisitor)interactor.getHandler()).interactWith(interactable);
+            }
+        }*/
     }
+    /*
+    @Override
+    public void cellInteractionOf(Interactor interactor){
+        super.cellInteractionOf(interactor);
+        if (interactor instanceof EnigmePlayer) {
+            for (DiscreteCoordinates coordinates :
+                    interactor.getCurrentCells()) {
+                ((EnigmeCell)coordToCell(coordinates)).acceptInteraction2(((EnigmePlayer) interactor));
+            }
+        }
+    }
+    @Override
+    public void viewInteractionOf(Interactor interactor){
+        super.viewInteractionOf(interactor);
+        if (interactor instanceof EnigmePlayer)
+            interactor.getFieldOfViewCells().forEach((i) -> (coordToCell(i)).acceptInteraction(((EnigmePlayer) interactor).getHandler()));
+    }
+*/
 }
 

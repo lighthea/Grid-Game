@@ -82,6 +82,7 @@ public abstract class Area implements Playable {
              this.interactors.add((Interactor)a);
             }
             this.actors.add(a);
+
         } catch (Exception E){
             if(!forced) {
                 System.out.println("Error : "+ E);
@@ -222,23 +223,14 @@ public abstract class Area implements Playable {
             this.actors.stream().forEach((i) -> i.draw(this.window));
 
         }
-        for(Interactor interactor  : interactors) {
-            if(interactor.wantsCellInteraction()) {
-                //demanderàlagrilledemettreenplacelesinteractionsdecontact
-                }
-            if(interactor.wantsViewInteraction()) {
-                    // demanderàlagrilledemettreenplacelesinteractiondistantes
-            }
-            }
-
         if (interactors != null)
         {
             for (Interactor interactor :
                     interactors) {
                 if (interactor.wantsCellInteraction())
-                    return;
+                    this.getAreaBehavior().cellInteractionOf(interactor);
                 if (interactor.wantsViewInteraction())
-                    return;
+                    this.getAreaBehavior().viewInteractionOf(interactor);
             }
         }
         this.updateCamera();
@@ -263,7 +255,7 @@ public abstract class Area implements Playable {
             }
 
             if (this.unregisteredActors != null){
-                this.unregisteredActors.parallelStream().forEach((i) -> this.addActor(i, false));
+                this.unregisteredActors.parallelStream().forEach((i) -> this.removeActor(i, false));
                 this.unregisteredActors.clear();
             }
 
@@ -271,12 +263,14 @@ public abstract class Area implements Playable {
                 for (Interactable key : this.interactablesToLeave.keySet()) {
                         this.areaBehavior.leave(key, this.interactablesToLeave.get(key));
                 }
+                this.interactablesToLeave.clear();
             }
 
             if (this.interactablesToEnter != null){
                 for (Interactable key : this.interactablesToEnter.keySet()) {
                     this.areaBehavior.enter(key, this.interactablesToEnter.get(key));
                 }
+                this.interactablesToEnter.clear();
             }
 
 

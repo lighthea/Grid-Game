@@ -21,6 +21,7 @@ public class Enigme extends AreaGame {
     private EnigmePlayer player;
     private Apple apple;
     private Door door;
+    private Door door2;
 
     @Override
     public int getFrameRate() {
@@ -55,17 +56,20 @@ public class Enigme extends AreaGame {
 
 
         this.setCurrentArea("LevelSelector", true);
-        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,5), handler);
+        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,5));
         apple = new Apple(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,6));
         List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)));
 
         door = new Door(getCurrentArea(), "Level1", new DiscreteCoordinates(5,5),Orientation.DOWN,
                 new DiscreteCoordinates(6,7),
                 DoorCoord);
+
+        door2 = new Door(getAreas().get("Level1"), "LevelSelector",  new DiscreteCoordinates(5,5), Orientation.UP,
+                new DiscreteCoordinates(5,0),Arrays.asList(new DiscreteCoordinates(5,0)));
         this.getCurrentArea().registerActor(player);
         this.getCurrentArea().registerActor(apple);
         this.getCurrentArea().registerActor(door);
-
+        this.getAreas().get("Level1").registerActor(door2);
         this.getCurrentArea().setViewCandidate(player);
         return true;
     }

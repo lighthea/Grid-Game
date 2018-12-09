@@ -4,18 +4,20 @@ import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.game.areagame.actor.*;
 import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
 import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
+import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Button;
 import ch.epfl.cs107.play.window.Canvas;
 import ch.epfl.cs107.play.window.Keyboard;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class EnigmePlayer extends MovableAreaEntity {
+public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     private Sprite sprite;
     private final static int ANIMATION_DURATION = 8 ;
-
+    private boolean pressed;
     public boolean isPassingDoor() {
         return isPassingDoor;
     }
@@ -26,6 +28,7 @@ public class EnigmePlayer extends MovableAreaEntity {
 
     private boolean isPassingDoor;
     private Door lastDoor;
+    private EnigmePlayerHandler handler;
     /**
      * Default MovableAreaEntity constructor
      *  @param area        (Area): Owner area. Not null
@@ -38,6 +41,7 @@ public class EnigmePlayer extends MovableAreaEntity {
         this.setOrientation(Orientation.valueOf("DOWN"));
         this.sprite = new Sprite("ghost.1", 1, 1.f,this) ;
         this.isPassingDoor = false;
+        handler = new EnigmePlayerHandler();
     }
 
     @Override
@@ -66,7 +70,27 @@ public class EnigmePlayer extends MovableAreaEntity {
     }
 
     @Override
+    public List<DiscreteCoordinates> getFieldOfViewCells() {
+        return Arrays.asList(getCurrentMainCellCoordinates().jump(getOrientation().toVector()));
+    }
+
+    @Override
+    public boolean wantsCellInteraction() {
+        return true;
+    }
+
+    @Override
+    public boolean wantsViewInteraction() {
+        if (pressed)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public void acceptInteraction(AreaInteractionVisitor v) {
+        ((EnigmeInteractionVisitor)v).interactWith(this);
     }
 
     public void enterArea(Area area , DiscreteCoordinates position){
@@ -87,6 +111,13 @@ public class EnigmePlayer extends MovableAreaEntity {
         Button upArrow = key.get(Keyboard.UP) ;
         Button leftArrow = key.get(Keyboard.LEFT) ;
         Button rightArrow = key.get(Keyboard.RIGHT) ;
+        Button L = key.get(Keyboard.L) ;
+
+        if (L.isDown()) {
+            pressed = true;
+            System.out.println("L");
+        }
+        else pressed = false;
 
         if(!isMoving) {
             if (downArrow.isDown()) {
@@ -140,16 +171,34 @@ public class EnigmePlayer extends MovableAreaEntity {
     public void setLastDoor(Door lastDoor) {
         this.lastDoor = lastDoor;
     }
-    private class EnigmePlayerHandler implements EnigmeInteractionVisitor {
+
+    @Override
+    public void interactWith(Interactable other){
+        other.acceptInteraction(handler);
+    }
+
+    private class EnigmePlayerHandler implements EnigmeInteractionVisitor, AreaInteractionVisitor {
+
         @Override
         public void interactWith(Door door) {
             setPassingDoor(true);
             setLastDoor(door);
-            }
-            @Override
-            public void interactWith(Apple apple){
-                apple.pickup();
-            }
+            System.out.println("Nous traversons une poooooorte");
+        }
+
+        @Override
+        public void interactWith(Apple apple){
+            System.out.println("Nous Mangeons des pommes");
+        }
+
+        @Override
+        public void interactWith(EnigmePlayer player) {
+
+        }
+        @Override
+        public void interactWith(EnigmeBehaviour.EnigmeCell cell) {
+
+        }
     }
 }
 

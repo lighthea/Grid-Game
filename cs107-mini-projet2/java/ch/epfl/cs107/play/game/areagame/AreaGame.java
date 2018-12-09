@@ -16,6 +16,11 @@ abstract public class AreaGame implements Game {
 
     private Window window;
     private FileSystem fileSystem;
+
+    public Map<String, Area> getAreas() {
+        return areas;
+    }
+
     protected Map<String, Area> areas;
 
     public Area getCurrentArea() {

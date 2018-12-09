@@ -2,6 +2,7 @@ package ch.epfl.cs107.play.game.enigme;
 
 import ch.epfl.cs107.play.game.areagame.AreaBehavior;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
 import ch.epfl.cs107.play.game.enigme.area.Demo2.Demo2Player;
 import ch.epfl.cs107.play.window.Window;
 public class Demo2Behavior extends AreaBehavior {
@@ -98,6 +99,11 @@ public class Demo2Behavior extends AreaBehavior {
         @Override
         public boolean isCellInteractable() {
             return true;
+        }
+
+        @Override
+        public void acceptInteraction(AreaInteractionVisitor v) {
+
         }
     }
 }

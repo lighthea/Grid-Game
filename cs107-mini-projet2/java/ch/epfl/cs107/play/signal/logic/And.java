@@ -6,6 +6,7 @@ public class And extends LogicSignal {
 
     private Logic s;
     private Logic t;
+
     And(Logic a, Logic b){
         this.s = a;
         this.t = b;
