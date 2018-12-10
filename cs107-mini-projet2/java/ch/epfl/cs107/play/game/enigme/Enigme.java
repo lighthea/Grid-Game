@@ -1,6 +1,5 @@
 package ch.epfl.cs107.play.game.enigme;
 
-import ch.epfl.cs107.play.game.actor.ShapeGraphics;
 import ch.epfl.cs107.play.game.actor.TextGraphics;
 import ch.epfl.cs107.play.game.areagame.AreaGame;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
@@ -9,15 +8,11 @@ import ch.epfl.cs107.play.game.enigme.actor.Door;
 import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.game.enigme.area.*;
 import ch.epfl.cs107.play.io.FileSystem;
-import ch.epfl.cs107.play.math.Circle;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
-import ch.epfl.cs107.play.math.Transform;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
 
 import java.awt.*;
-import java.util.Arrays;
-import java.util.List;
 
 public class Enigme extends AreaGame {
 
@@ -57,7 +52,7 @@ public class Enigme extends AreaGame {
         this.addArea(new Level1());
         this.addArea(new Level2());
         this.addArea(new Level3());
-        this.addArea(new MaisonAraignee());
+        this.addArea(new ile());
 
         DiscreteCoordinates coordinates = new DiscreteCoordinates(0, 0);
         this.setCurrentArea("ile", true);
