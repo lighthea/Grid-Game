@@ -2,6 +2,7 @@ package ch.epfl.cs107.play.game.enigme.area;
 
 import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.game.areagame.actor.Background;
+import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.Vector;
@@ -36,14 +37,16 @@ public class EnigmeArea extends Area {
         try {
             super.begin(window, fileSystem);
             this.setAreaBehavior(new EnigmeBehaviour(window, this.getTitle()));
+            this.registerActor(new Foreground(this));
             this.registerActor(new Background(this));
+
             setViewCenter(viewCenter);
 
             return true;
 
         } catch (Exception E){
 
-            System.out.println("Error  : "+ E);
+            System.out.println("Error  : " + E);
             return false;
 
         }

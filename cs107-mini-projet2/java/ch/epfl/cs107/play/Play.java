@@ -25,7 +25,9 @@ public class Play {
 	 * @param args (Array of String): ignored
 	 */
 	public static void main(String[] args) {
-
+		System.setProperty("sun.java2d.opengl", "true" ); //force ogl
+		System.setProperty("sun.java2d.ddscale", "true" );//only when using direct3d
+		System.setProperty("sun.java2d.translaccel", "true"); //only when using direct3d
 		// Define cascading file system
 		final FileSystem fileSystem = new ResourceFileSystem(DefaultFileSystem.INSTANCE);
 

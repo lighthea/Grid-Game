@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class EnigmePlayer extends MovableAreaEntity implements Interactor {
+    public final float maxHealth = 100;
     private Sprite sprite;
     private final static int ANIMATION_DURATION = 8 ;
     private boolean pressed;
@@ -29,6 +30,17 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     private boolean isPassingDoor;
     private Door lastDoor;
     private EnigmePlayerHandler handler;
+
+    public float getHealth() {
+        return health;
+    }
+
+    public void setHealth(float health) {
+        this.health = health;
+    }
+
+    private float health;
+    private List<Interactable> inventory;
     /**
      * Default MovableAreaEntity constructor
      *  @param area        (Area): Owner area. Not null
@@ -42,6 +54,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         this.sprite = new Sprite("ghost.1", 1, 1.f,this) ;
         this.isPassingDoor = false;
         handler = new EnigmePlayerHandler();
+        health = 100;
     }
 
     @Override
@@ -81,11 +94,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public boolean wantsViewInteraction() {
-        if (pressed)
-        {
-            return true;
-        }
-        return false;
+        return pressed;
     }
 
     @Override
@@ -105,6 +114,9 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public void update (float deltaTime){
+        if (health <= 0){
+            this.getOwnerArea().unregisterActor(this);
+        }
         Keyboard key = getOwnerArea().getKeyboard();
 
         Button downArrow = key.get(Keyboard.DOWN) ;
@@ -188,6 +200,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
         @Override
         public void interactWith(Apple apple){
+            health += 5;
             System.out.println("Nous Mangeons des pommes");
         }
 
@@ -199,6 +212,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         public void interactWith(EnigmeBehaviour.EnigmeCell cell) {
 
         }
+
     }
 }
 

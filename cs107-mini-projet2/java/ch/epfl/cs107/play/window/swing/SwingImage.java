@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
 
+import java.awt.GraphicsConfiguration;
+
+
 /**
  * Swing implementation of an image.
  */

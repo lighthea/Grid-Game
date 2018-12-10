@@ -23,10 +23,16 @@ public class EnigmeBehaviour extends AreaBehavior {
         super(window, fileName);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
-                cells[j][i] = new EnigmeCell(i, j, EnigmeCellType.toType(getBehaviorMap().getRGB(getHeight() - 1 - i, j)));
+                cells[i][j] = new EnigmeCell(i, j);
             }
         }
+
     }
+
+    public int getCellNature (DiscreteCoordinates coordinates){
+        return ((EnigmeCell)coordToCell(coordinates)).getNature().type;
+    }
+
     public enum EnigmeCellType {
         NULL(0),
         WALL(-16777216), // RGB code of black
@@ -70,9 +76,9 @@ public class EnigmeBehaviour extends AreaBehavior {
             return nature;
         }
 
-        public EnigmeCell(int x, int y, EnigmeCellType type) {
+        public EnigmeCell(int x, int y) {
             super(x, y);
-            this.nature = type;
+            this.nature = EnigmeCellType.toType(getBehaviorMap().getRGB(getHeight() - 1 - x, y));
         }
 
         @Override
@@ -104,50 +110,7 @@ public class EnigmeBehaviour extends AreaBehavior {
         public boolean isCellInteractable() {
             return true;
         }
+    }
 
-/*
-        @Override
-        public void viewInteractionOf(Interactor interactor){
-            for(Interactable interactable  : getInteractablesList()){
-                if(interactable.isViewInteractable())
-                    if (interactor instanceof EnigmePlayer) {
-                        interactable.acceptInteraction(((EnigmePlayer) interactor).getHandler());
-                    }
-            }
-        }
-        @Override
-        public void cellInteractionOf(Interactor interactor) {
-            for(Interactable interactable  : getInteractablesList()){
-                if(interactable.isCellInteractable())
-                    if (interactor instanceof EnigmePlayer)
-                        interactable.acceptInteraction(((EnigmePlayer) interactor).getHandler());
-            }
-        }
-
-        public void acceptInteraction2(EnigmePlayer interactor) {
-            for(Interactable interactable  : getInteractablesList()){
-                System.out.println(interactable.getClass().toString());
-                    ((EnigmeInteractionVisitor)interactor.getHandler()).interactWith(interactable);
-            }
-        }*/
-    }
-    /*
-    @Override
-    public void cellInteractionOf(Interactor interactor){
-        super.cellInteractionOf(interactor);
-        if (interactor instanceof EnigmePlayer) {
-            for (DiscreteCoordinates coordinates :
-                    interactor.getCurrentCells()) {
-                ((EnigmeCell)coordToCell(coordinates)).acceptInteraction2(((EnigmePlayer) interactor));
-            }
-        }
-    }
-    @Override
-    public void viewInteractionOf(Interactor interactor){
-        super.viewInteractionOf(interactor);
-        if (interactor instanceof EnigmePlayer)
-            interactor.getFieldOfViewCells().forEach((i) -> (coordToCell(i)).acceptInteraction(((EnigmePlayer) interactor).getHandler()));
-    }
-*/
 }
 

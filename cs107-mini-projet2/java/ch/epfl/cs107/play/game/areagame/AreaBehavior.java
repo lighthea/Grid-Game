@@ -53,7 +53,7 @@ public abstract class AreaBehavior {
         boolean b = true;
         for (int i = 0; i < coordinates.size(); ++i)
         {
-            b = b && coordinates.get(i).x < getWidth() && coordinates.get(i).y < getHeight();
+            b = b && coordinates.get(i).y < getWidth() && coordinates.get(i).x < getHeight();
         }
         return b;
     }
@@ -62,15 +62,16 @@ public abstract class AreaBehavior {
         boolean b = true;
         for (int i = 0; i < entity.getCurrentCells().size(); ++i)
         {
-            b = b && coordinates.get(i).x < getWidth() &&
-                    coordinates.get(i).y  < getHeight() &&
-                    coordinates.get(i).x  > -2 &&
-                    coordinates.get(i).y  > -2 ;
+            b = b && coordinates.get(i).y < getWidth() &&
+                    coordinates.get(i).x  < getHeight();
 
             if (b) {
                 b = b && coordToCell(coordinates.get(i)).canEnter(entity);
-            } else {return false;}
+            } else {
+                System.out.println(b);
+                return false;}
         }
+        System.out.println(b);
         return b;
     }
 
@@ -96,7 +97,7 @@ public abstract class AreaBehavior {
         this.behaviorMap = window.getImage(ResourcePath.getBehaviors(fileName), null, false);
         this.width = behaviorMap.getWidth();
         this.height =  behaviorMap.getHeight();
-        this.cells = new Cell[width][height];
+        this.cells = new Cell[height][width];
     }
 
     public static abstract class Cell implements Interactable {

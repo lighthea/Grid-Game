@@ -83,8 +83,8 @@ public abstract class MovableAreaEntity extends AreaEntity {
 
         if(isMoving && ((targetMainCellCoordinates.x != this.getCurrentMainCellCoordinates().x) ||
                         (targetMainCellCoordinates.y != this.getCurrentMainCellCoordinates().y))){
-            getOwnerArea().enterAreaCells(this, getEnteringCells());
-            getOwnerArea().leaveAreaCells(this, getLeavingCells());
+            /*if(getOwnerArea().enterAreaCells(this, getEnteringCells()))
+                getOwnerArea().leaveAreaCells(this, getLeavingCells());*/
             Vector distance = getOrientation().toVector();
             distance = distance.mul(1.0f / framesForCurrentMove);
             setCurrentPosition(getPosition().add(distance));
