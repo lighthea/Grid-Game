@@ -36,8 +36,11 @@ public class EnigmeArea extends Area {
         try {
             super.begin(window, fileSystem);
             this.setAreaBehavior(new EnigmeBehaviour(window, this.getTitle()));
-            this.registerActor(new Foreground(this));
-            this.registerActor(new Background(this));
+            while (!this.registerActor(new Foreground(this)))
+                System.out.println("Loading Foreground...");
+            while (!this.registerActor(new Background(this)))
+                System.out.println("Loading Foreground...");
+
 
             setViewCenter(viewCenter);
 

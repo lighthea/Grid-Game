@@ -62,7 +62,7 @@ public class Background extends Entity {
      */
     public Background(String name, int width, int height, RegionOfInterest region) {
         super(DiscreteCoordinates.ORIGIN.toVector());
-        sprite = new ImageGraphics(ResourcePath.getBackgrounds(name), width, height, region, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
+        sprite = new ImageGraphics(ResourcePath.getBackgrounds(name), width, height, region, Vector.ZERO, 1.0f, 0);
         sprite.setParent(this);
     }
 

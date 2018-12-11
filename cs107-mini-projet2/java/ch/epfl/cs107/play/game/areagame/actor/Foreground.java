@@ -10,6 +10,10 @@ import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
 public class Foreground extends Entity {
+    public ImageGraphics getSprite() {
+        return sprite;
+    }
+
     /// Sprite of the actor
     private final ImageGraphics sprite;
 
@@ -21,7 +25,7 @@ public class Foreground extends Entity {
     public Foreground(Area area) {
         super(DiscreteCoordinates.ORIGIN.toVector());
         sprite = new ImageGraphics(ResourcePath.getForegrounds(area.getTitle()), area.getWidth(), area.getHeight(),
-                null, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
+                null, Vector.ZERO, 1.0f, Float.MAX_VALUE);
         sprite.setParent(this);
     }
 
@@ -33,7 +37,7 @@ public class Foreground extends Entity {
      */
     public Foreground(Area area, RegionOfInterest region) {
         super(DiscreteCoordinates.ORIGIN.toVector());
-        sprite = new ImageGraphics(ResourcePath.getForegrounds(area.getTitle()), area.getWidth(), area.getHeight(), region, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
+        sprite = new ImageGraphics(ResourcePath.getForegrounds(area.getTitle()), area.getWidth(), area.getHeight(), region, Vector.ZERO, 1.0f, Float.MAX_VALUE);
         sprite.setParent(this);
     }
 
@@ -45,7 +49,7 @@ public class Foreground extends Entity {
      */
     public Foreground(Area area, RegionOfInterest region, String name) {
         super(DiscreteCoordinates.ORIGIN.toVector());
-        sprite = new ImageGraphics(ResourcePath.getForegrounds(name), area.getWidth(), area.getHeight(), region, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
+        sprite = new ImageGraphics(ResourcePath.getForegrounds(name), area.getWidth(), area.getHeight(), region, Vector.ZERO, 1.0f, Float.MAX_VALUE);
         sprite.setParent(this);
     }
 
@@ -58,7 +62,7 @@ public class Foreground extends Entity {
      */
     public Foreground(String name, int width, int height, RegionOfInterest region) {
         super(DiscreteCoordinates.ORIGIN.toVector());
-        sprite = new ImageGraphics(ResourcePath.getForegrounds(name), width, height, region, Vector.ZERO, 1.0f, -Float.MAX_VALUE);
+        sprite = new ImageGraphics(ResourcePath.getForegrounds(name), width, height, region, Vector.ZERO, 1.0f,Float.MAX_VALUE);
         sprite.setParent(this);
     }
 

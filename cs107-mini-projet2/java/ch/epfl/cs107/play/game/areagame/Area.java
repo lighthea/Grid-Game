@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 
 /**
@@ -134,15 +135,16 @@ public abstract class Area implements Playable {
      * @return (boolean): true if the actor is correctly registered
      */
     public final boolean registerActor(Actor a){
-
-        try {
-            this.registeredActors.add(a);
-            return true;
-        } catch (Exception E){
-            System.out.println("Error cant add actor : " + E + a.toString());
+        if (a != null)
+            try {
+                this.registeredActors.add(a);
+                return true;
+            } catch (Exception E){
+                System.out.println("Error cant add actor : " + E + a.toString());
+                return false;
+            }
+        else
             return false;
-        }
-
     }
 
     /**
@@ -155,7 +157,7 @@ public abstract class Area implements Playable {
             this.unregisteredActors.add(a);
             return true;
         } catch (Exception E){
-            System.out.println("Error cant add actor : " + E);
+            System.out.println("Error cant remove actor : " + E);
             return false;
         }
     }
@@ -178,7 +180,6 @@ public abstract class Area implements Playable {
 
     /** @return the Window Keyboard for inputs */
     public final Keyboard getKeyboard () {
-        // TODO implements me #PROJECT #TUTO
         return this.window.getKeyboard();
     }
 
@@ -186,6 +187,7 @@ public abstract class Area implements Playable {
 
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
+
         this.actors = new LinkedList<>();
         this.registeredActors = new LinkedList<>();
         this.unregisteredActors = new LinkedList<>();
@@ -220,8 +222,12 @@ public abstract class Area implements Playable {
     public void update(float deltaTime) {
         purgeRegistration();
         if (this.actors != null){
-            this.actors.parallelStream().forEach((i) -> i.update(deltaTime));
-            this.actors.stream().forEach((i) -> i.draw(this.window));
+            this.actors.forEach((i) -> i.update(deltaTime));
+            for (Actor i : this.actors) {
+                i.draw(this.window);
+                if (i instanceof Foreground)
+                    System.out.println(((Foreground) i).getSprite().getDepth());
+            }
 
         }
         if (interactors != null)
@@ -250,13 +256,14 @@ public abstract class Area implements Playable {
         return false;
     }
     private void purgeRegistration() {
-            if (this.registeredActors != null){
-                this.registeredActors.parallelStream().forEach((i) -> this.addActor(i, false));
-                this.registeredActors.clear();
+        if (this.registeredActors != null){
+            for (Actor i : this.registeredActors) this.addActor(i, false);
+
+            this.registeredActors.clear();
             }
 
             if (this.unregisteredActors != null){
-                this.unregisteredActors.parallelStream().forEach((i) -> this.removeActor(i, false));
+                this.unregisteredActors.forEach((i) -> this.removeActor(i, false));
                 this.unregisteredActors.clear();
             }
 

@@ -18,7 +18,7 @@ import java.util.List;
 public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     public final float maxHealth = 100;
     private Sprite sprite;
-    private final static int ANIMATION_DURATION = 4 ;
+    private final static int ANIMATION_DURATION = 6 ;
     private boolean pressed;
     public boolean isPassingDoor() {
         return isPassingDoor;
@@ -124,6 +124,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public void update (float deltaTime){
+        System.out.println(sprite.getDepth());
         sameCellAsBefore = !wasMoving || isMoving ;
         if (health <= 0){
             this.getOwnerArea().unregisterActor(this);

@@ -7,9 +7,6 @@ import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.math.RegionOfInterest;
 import ch.epfl.cs107.play.math.Vector;
 
-import java.util.List;
-import java.util.function.DoublePredicate;
-
 public class Animation {
     private Vector anchor;
     private Sprite sprite;
@@ -24,10 +21,9 @@ public class Animation {
         this.sprite = sprite;
 
         animation = new Sprite[colNumber][lineNumber];
-        for (int i = 0; i < colNumber; i++) {
-            for (int j = 0; j < lineNumber; j++) {
-                animation[i][j] = new Sprite(sprite.getName().substring(14, sprite.getName().length() - 4),width , heigth,parent,new RegionOfInterest(0, j * 21, 16, 21), anchor) ;
-            }
-        }
+        for (int i = 0; i < colNumber; ++i)
+            for (int j = 0; j < lineNumber; ++j)
+                animation[i][j] = new Sprite(sprite.getName().substring(14, sprite.getName().length() - 4), width,
+                        heigth, parent, new RegionOfInterest(i * 16, j * 21, 16, 21), anchor, 1f, 0);
     }
 }

@@ -32,12 +32,14 @@ public class Enigme extends AreaGame {
     public void update (float deltaTime){
         super.update(deltaTime);
         healthPercentageMax = player.getHealth() / player.maxHealth;
+
         if (player.isPassingDoor()) {
             this.setCurrentArea(player.getLastDoor().getDestinationArea(), false);
             player.enterArea(getCurrentArea(), player.getLastDoor().getLandingCoordinates());
             player.setPassingDoor(false);
             this.getCurrentArea().setViewCandidate(player);
         }
+
         health.setText(Float.toString((int)healthPercentageMax));
         health.draw(getWindow());
     }
