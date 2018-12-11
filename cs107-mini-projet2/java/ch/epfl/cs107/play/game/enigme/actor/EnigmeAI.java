@@ -22,6 +22,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
     private boolean fixed;
     private DiscreteCoordinates[] path;
     private int currentPathIndex;
+    private Animation animation;
     public float getHealth() {
         return health;
     }
@@ -38,15 +39,23 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
      * @param orientation (Orientation): Initial orientation of the entity. Not null
      * @param position    (Coordinate): Initial position of the entity. Not null
      */
-    public EnigmeAI(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed, DiscreteCoordinates... path) {
+    public EnigmeAI(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed,  DiscreteCoordinates... path) {
         super(area, orientation, position);
         this.damages = damages;
         this.fixed = fixed;
         this.path = path;
         this.sprite = new Sprite("mob.1", 1, 1.f,this) ;
         this.health = maxHealth;
-    }
+        Vector anchor =new Vector(0.25f, 0.32f) ;
+        this.animation = new Animation(this.sprite, anchor, 4, 4, this,1 , 1);
+        sprite = animation.getAnimation()[0][0];
+        resetMotion();
 
+    }
+    @Override
+    public boolean uniqueInteractable(){
+        return true;
+    }
     @Override
     public void draw(Canvas canvas) {
         sprite.draw(canvas);
@@ -76,7 +85,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
 
     @Override
     public boolean isCellInteractable() {
-        return false;
+        return true;
     }
 
     @Override
@@ -94,7 +103,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
 
     @Override
     public boolean wantsCellInteraction() {
-        return true;
+        return false;
     }
 
     @Override

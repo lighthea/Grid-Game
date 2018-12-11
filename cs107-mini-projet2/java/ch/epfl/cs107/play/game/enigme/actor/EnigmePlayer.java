@@ -18,7 +18,7 @@ import java.util.List;
 public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     public final float maxHealth = 100;
     private Sprite sprite;
-    private final static int ANIMATION_DURATION = 8 ;
+    private final static int ANIMATION_DURATION = 4 ;
     private boolean pressed;
     public boolean isPassingDoor() {
         return isPassingDoor;
@@ -32,7 +32,9 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     private Door lastDoor;
     private EnigmePlayerHandler handler;
     private short orientationInt;
-
+    private boolean wasMoving;
+    private boolean wasPressed;
+    private boolean sameCellAsBefore;
     public float getHealth() {
         return health;
     }
@@ -57,8 +59,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         this.isPassingDoor = false;
         handler = new EnigmePlayerHandler();
         health = 100;
-        Vector anchor =new Vector(0.25f, 0.32f) ;
-        animationSprite = new Animation(this.sprite, anchor, 4, 4, this);
+        Vector anchor = new Vector(0.25f, 0.32f) ;
+        animationSprite = new Animation(this.sprite, anchor, 4, 4, this, 0.7f, 0.8f);
         currentFrame =0;
         orientationInt = 0;
         sprite = animationSprite.getAnimation()[0][0];
@@ -101,7 +103,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public boolean wantsViewInteraction() {
-        return pressed;
+
+        return !wasPressed && pressed;
     }
 
     @Override
@@ -121,6 +124,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public void update (float deltaTime){
+        sameCellAsBefore = !wasMoving || isMoving ;
         if (health <= 0){
             this.getOwnerArea().unregisterActor(this);
         }
@@ -132,7 +136,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         Button leftArrow = key.get(Keyboard.LEFT) ;
         Button rightArrow = key.get(Keyboard.RIGHT) ;
         Button L = key.get(Keyboard.L) ;
-
+        wasPressed= pressed;
         if (L.isDown()) pressed = true;
         else pressed = false;
 
@@ -140,6 +144,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
             if (downArrow.isDown()) {
                 if (getOrientation().equals(Orientation.DOWN)) {
                     this.move(ANIMATION_DURATION);
+                    orientationInt = 0;
                     return;
                 } else {
                     setOrientation(Orientation.DOWN);
@@ -151,6 +156,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
             else if (upArrow.isDown()) {
                 if (getOrientation().equals(Orientation.UP)) {
                     this.move(ANIMATION_DURATION);
+                    orientationInt = 2;
                     return;
                 }
                 else {
@@ -159,9 +165,21 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                     return;
                 }
             }
+            else if (rightArrow.isDown()) {
+                if (getOrientation().equals(Orientation.RIGHT)) {
+                    this.move(ANIMATION_DURATION);
+                    orientationInt = 3;
+                    return;
+                } else {
+                    setOrientation(Orientation.RIGHT);
+                    orientationInt = 3;
+                    return;
+                }
+            }
             else if (leftArrow.isDown()) {
                 if (getOrientation().equals(Orientation.LEFT)) {
                     this.move(ANIMATION_DURATION);
+                    orientationInt = 1;
                     return;
                 } else {
                     setOrientation(Orientation.LEFT);
@@ -169,23 +187,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                     return;
                 }
             }
-            else if (rightArrow.isDown()) {
-                if (getOrientation().equals(Orientation.RIGHT)) {
-                    this.move(ANIMATION_DURATION);
-                    return;
-                }
-                else {
-                    setOrientation(Orientation.RIGHT);
-                    orientationInt = 3;
-                    return;
-                }
-            }
 
+        } else {
+            sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
+            currentFrame = (currentFrame + 1) % 4;
         }
 
-        sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
-        currentFrame = (currentFrame + 1)%4;
+        wasMoving = isMoving;
         super.update(deltaTime);
+
     }
 
     public Door getLastDoor() {
@@ -198,8 +208,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public void interactWith(Interactable other){
+        if (other.uniqueInteractable() && other.getCurrentCells().equals(this.getCurrentCells()))
+            if (!sameCellAsBefore) {
+                other.acceptInteraction(handler);
+                return;
+            }
+            else {
+                return;
+            }
         other.acceptInteraction(handler);
-
     }
 
     private class EnigmePlayerHandler implements EnigmeInteractionVisitor, AreaInteractionVisitor {

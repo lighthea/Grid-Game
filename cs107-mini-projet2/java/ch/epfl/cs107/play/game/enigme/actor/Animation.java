@@ -19,14 +19,14 @@ public class Animation {
     }
 
     private Sprite[][] animation;
-    public Animation(Sprite sprite, Vector anchor, int colNumber, int lineNumber, Actor parent) {
+    public Animation(Sprite sprite, Vector anchor, int colNumber, int lineNumber, Actor parent, float width, float heigth) {
         this.anchor = anchor;
         this.sprite = sprite;
 
         animation = new Sprite[colNumber][lineNumber];
         for (int i = 0; i < colNumber; i++) {
             for (int j = 0; j < lineNumber; j++) {
-                animation[i][j] = new Sprite(sprite.getName().substring(14, sprite.getName().length() - 4),0.6f , 0.6f,parent,new RegionOfInterest(0, j * 21, 16, 21), anchor) ;
+                animation[i][j] = new Sprite(sprite.getName().substring(14, sprite.getName().length() - 4),width , heigth,parent,new RegionOfInterest(0, j * 21, 16, 21), anchor) ;
             }
         }
     }

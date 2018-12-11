@@ -63,7 +63,7 @@ public class Enigme extends AreaGame {
                 if (((EnigmeBehaviour) (getCurrentArea().getAreaBehavior())).getCellNature(new DiscreteCoordinates(i, j)) == -1)
                     coordinates = (getCurrentArea().getAreaBehavior().getCells()[i][j]).getCoordinates();
             }
-        ai1 = new EnigmeAI(getCurrentArea(), Orientation.RIGHT, new DiscreteCoordinates(125, 71), 10, true);
+        ai1 = new EnigmeAI(getCurrentArea(), Orientation.RIGHT, new DiscreteCoordinates(125, 71), 10, false, new DiscreteCoordinates(124,71),new DiscreteCoordinates(123,71));
         player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, coordinates);
         //apple = new Apple(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,6));
         //List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)));

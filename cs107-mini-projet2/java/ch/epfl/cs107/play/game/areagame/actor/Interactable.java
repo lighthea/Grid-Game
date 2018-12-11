@@ -18,6 +18,9 @@ import java.util.List;
  */
 public interface Interactable {
 
+    default boolean uniqueInteractable(){
+        return false;
+    };
     boolean takeCellSpace();
     boolean isViewInteractable();
     boolean isCellInteractable();
