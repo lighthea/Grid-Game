@@ -6,6 +6,7 @@ import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
 import ch.epfl.cs107.play.game.areagame.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
+import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Button;
 import ch.epfl.cs107.play.window.Canvas;
 import ch.epfl.cs107.play.window.Keyboard;
@@ -22,14 +23,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     public boolean isPassingDoor() {
         return isPassingDoor;
     }
-
+    private Animation animationSprite;
     public void setPassingDoor(boolean b) {
         isPassingDoor = b;
     }
-
+    private int currentFrame;
     private boolean isPassingDoor;
     private Door lastDoor;
     private EnigmePlayerHandler handler;
+    private short orientationInt;
 
     public float getHealth() {
         return health;
@@ -51,10 +53,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         super(area, orientation, position);
 
         this.setOrientation(Orientation.valueOf("DOWN"));
-        this.sprite = new Sprite("ghost.1", 1, 1.f,this) ;
+        this.sprite = new Sprite("max.new.1", 1, 1.f,this) ;
         this.isPassingDoor = false;
         handler = new EnigmePlayerHandler();
         health = 100;
+        Vector anchor =new Vector(0.25f, 0.32f) ;
+        animationSprite = new Animation(this.sprite, anchor, 4, 4, this);
+        currentFrame =0;
+        orientationInt = 0;
+        sprite = animationSprite.getAnimation()[0][0];
     }
 
     @Override
@@ -117,6 +124,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         if (health <= 0){
             this.getOwnerArea().unregisterActor(this);
         }
+
         Keyboard key = getOwnerArea().getKeyboard();
 
         Button downArrow = key.get(Keyboard.DOWN) ;
@@ -125,10 +133,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         Button rightArrow = key.get(Keyboard.RIGHT) ;
         Button L = key.get(Keyboard.L) ;
 
-        if (L.isDown()) {
-            pressed = true;
-            System.out.println("L");
-        }
+        if (L.isDown()) pressed = true;
         else pressed = false;
 
         if(!isMoving) {
@@ -138,6 +143,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                     return;
                 } else {
                     setOrientation(Orientation.DOWN);
+                    orientationInt = 0;
                     return;
                 }
             }
@@ -149,6 +155,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                 }
                 else {
                     setOrientation(Orientation.UP);
+                    orientationInt = 2;
                     return;
                 }
             }
@@ -158,6 +165,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                     return;
                 } else {
                     setOrientation(Orientation.LEFT);
+                    orientationInt = 1;
                     return;
                 }
             }
@@ -168,11 +176,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                 }
                 else {
                     setOrientation(Orientation.RIGHT);
+                    orientationInt = 3;
                     return;
                 }
             }
+
         }
 
+        sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
+        currentFrame = (currentFrame + 1)%4;
         super.update(deltaTime);
     }
 
@@ -187,6 +199,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     @Override
     public void interactWith(Interactable other){
         other.acceptInteraction(handler);
+
     }
 
     private class EnigmePlayerHandler implements EnigmeInteractionVisitor, AreaInteractionVisitor {
@@ -195,7 +208,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         public void interactWith(Door door) {
             setPassingDoor(true);
             setLastDoor(door);
-            System.out.println("Nous traversons une poooooorte");
+            System.out.println("Nous traversons une porte");
         }
 
         @Override
@@ -206,13 +219,16 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
         @Override
         public void interactWith(EnigmePlayer player) {
-
         }
         @Override
         public void interactWith(EnigmeBehaviour.EnigmeCell cell) {
 
         }
-
+        @Override
+        public void interactWith(EnigmeAI ai) {
+            System.out.println("AI " + ai.getHealth());
+            ai.setHealth(ai.getHealth() - 5);
+        }
     }
 }
 

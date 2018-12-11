@@ -1,6 +1,7 @@
 package ch.epfl.cs107.play.game.areagame.handler;
 
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.enigme.Enigme;
 import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.game.enigme.actor.*;
 
@@ -23,5 +24,7 @@ public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
     default void interactWith(pressurePlate pplate) {
     }
     default void interactWith(Torch torch) {
+    }
+    default void interactWith(EnigmeAI ai) {
     }
 }

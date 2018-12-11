@@ -97,10 +97,9 @@ public class EnigmeBehaviour extends AreaBehavior {
         public boolean canEnter (Interactable entity) {
             if (super.canEnter(entity)) {
                 if ((this.nature.type == -16777216 || this.nature.type == -16776961 || this.nature.type == 0)) {
-                    System.out.println(EnigmeCellType.toType(nature.type).toString());
+
                     return false;
                 }
-                System.out.println(EnigmeCellType.toType(nature.type).toString());
                 return true;
             }
             return false;

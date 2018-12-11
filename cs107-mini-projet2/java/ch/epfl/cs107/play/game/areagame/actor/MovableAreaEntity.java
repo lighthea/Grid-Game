@@ -19,6 +19,11 @@ public abstract class MovableAreaEntity extends AreaEntity {
     /// Indicate if the actor is currently moving
     protected boolean isMoving;
     private int framesForCurrentMove;
+
+    public void setTargetMainCellCoordinates(DiscreteCoordinates targetMainCellCoordinates) {
+        this.targetMainCellCoordinates = targetMainCellCoordinates;
+    }
+
     private DiscreteCoordinates targetMainCellCoordinates;
     private List<DiscreteCoordinates> currentCells;
 
@@ -69,7 +74,9 @@ public abstract class MovableAreaEntity extends AreaEntity {
             this.framesForCurrentMove = frameForMove;
             Vector orientation = getOrientation().toVector();
             targetMainCellCoordinates = getCurrentMainCellCoordinates().jump(orientation);
+
             isMoving = true;
+
             return true;
         }
         return false;
