@@ -16,17 +16,17 @@ import java.util.List;
 
 public class EnigmeAI extends MovableAreaEntity implements Interactor {
     public final float maxHealth = 100;
-    private Sprite sprite;
+    protected Sprite sprite;
     private final static int ANIMATION_DURATION = 8 ;
-    private EnigmeAI.EnigmeAIHandler handler;
-    private float damages;
+    protected EnigmeInteractionVisitor handler;
+    protected float damages;
     private boolean fixed;
     private DiscreteCoordinates[] path;
     private int currentPathIndex;
     private int orientationInt, currentFrame;
-    private Animation animation;
+    protected Animation animation;
     private long lastDamage;
-    private int coolDown;
+    protected int coolDown;
     private boolean isAttacking;
     private boolean canAttack;
 
@@ -153,7 +153,6 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                 }
 
             } else {
-                System.out.println(orientationInt);
                 sprite = animation.getAnimation()[orientationInt][currentFrame];
                 currentFrame = (currentFrame + 1) % 4;
             }

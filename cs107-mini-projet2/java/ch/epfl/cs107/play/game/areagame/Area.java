@@ -2,9 +2,11 @@ package ch.epfl.cs107.play.game.areagame;
 
 import ch.epfl.cs107.play.game.Playable;
 import ch.epfl.cs107.play.game.actor.Actor;
+import ch.epfl.cs107.play.game.areagame.actor.Background;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 import ch.epfl.cs107.play.game.areagame.actor.Interactor;
+import ch.epfl.cs107.play.game.enigme.actor.EnigmeNPC;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Transform;
@@ -186,6 +188,10 @@ public abstract class Area implements Playable {
 
     /// Area implements Playable
 
+    public boolean isInPause() {
+        return inPause;
+    }
+
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
 
@@ -242,7 +248,19 @@ public abstract class Area implements Playable {
                 }
             }
             this.updateCamera();
+        } else {
+            if (this.actors != null) {
+                this.actors.forEach((i) -> {
+                    i.draw(window);
+                    if (getKeyboard().get(Keyboard.ENTER).isPressed()){
+                        if (i instanceof EnigmeNPC)
+                            ((EnigmeNPC) i).setInteract(false);
+                        resume(window, fileSystem);
+                    }
+                });
+            }
         }
+
     }
     public final boolean leaveAreaCells(Interactable entity ,List <DiscreteCoordinates > coordinates){
         if (this.areaBehavior.canLeave(entity, coordinates)){

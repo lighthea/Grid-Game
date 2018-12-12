@@ -27,4 +27,6 @@ public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
     }
     default void interactWith(EnigmeAI ai) {
     }
+    default void interactWith(EnigmeNPC npc) {
+    }
 }

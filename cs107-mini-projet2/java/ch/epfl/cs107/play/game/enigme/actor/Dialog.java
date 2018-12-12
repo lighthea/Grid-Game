@@ -52,13 +52,13 @@ public class Dialog implements Graphics {
         final Vector secondLineAnchor = new Vector(leftPadding, height - 2.5f * fontSize);
         final Vector thirdLineAnchor = new Vector(leftPadding, height - 4 * fontSize);
 
-        sprite = new ImageGraphics(ResourcePath.getSprite(backgroundName), width, height, null, Vector.ZERO, 1.0f, 1000);
+        sprite = new ImageGraphics(ResourcePath.getSprite(backgroundName), width, height, null, Vector.ZERO, 1.0f, Float.MAX_VALUE);
 
         lines = new TextGraphics[3];
 
-        lines[0] = new TextGraphics("", fontSize, Color.BLACK, null, 0.0f, false, false, firstLineAnchor, TextAlign.Horizontal.LEFT, TextAlign.Vertical.MIDDLE,  1.0f, 1001);
-        lines[1] = new TextGraphics("", fontSize, Color.BLACK, null, 0.0f, false, false, secondLineAnchor, TextAlign.Horizontal.LEFT, TextAlign.Vertical.MIDDLE, 1.0f, 1001);
-        lines[2] = new TextGraphics("", fontSize, Color.BLACK, null, 0.0f, false, false, thirdLineAnchor, TextAlign.Horizontal.LEFT, TextAlign.Vertical.MIDDLE, 1.0f, 1001);
+        lines[0] = new TextGraphics("", fontSize, Color.BLACK, null, 0.0f, false, false, firstLineAnchor, TextAlign.Horizontal.LEFT, TextAlign.Vertical.MIDDLE,  1.0f, Float.POSITIVE_INFINITY);
+        lines[1] = new TextGraphics("", fontSize, Color.BLACK, null, 0.0f, false, false, secondLineAnchor, TextAlign.Horizontal.LEFT, TextAlign.Vertical.MIDDLE, 1.0f,  Float.POSITIVE_INFINITY);
+        lines[2] = new TextGraphics("", fontSize, Color.BLACK, null, 0.0f, false, false, thirdLineAnchor, TextAlign.Horizontal.LEFT, TextAlign.Vertical.MIDDLE, 1.0f,  Float.POSITIVE_INFINITY);
 
         resetDialog(text);
     }

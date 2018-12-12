@@ -37,7 +37,7 @@ public class Play {
 		XMLTexts.initialize(fileSystem, "strings/enigme_fr.xml");
 
 		// Use Swing display
-		final Window window = new SwingWindow(game.getTitle(), fileSystem, 1920, 1080);
+		final Window window = new SwingWindow(game.getTitle(), fileSystem, 1000, 1000);
 
 		try {
 

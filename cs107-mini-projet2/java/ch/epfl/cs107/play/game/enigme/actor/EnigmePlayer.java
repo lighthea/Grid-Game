@@ -250,7 +250,17 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         }
         @Override
         public void interactWith(EnigmeAI ai) {
+            if (ai instanceof EnigmeNPC) {
+                interactWith((EnigmeNPC) ai);
+                return;
+            }
             ai.setHealth(ai.getHealth() - 5);
+        }
+
+        @Override
+        public void interactWith(EnigmeNPC npc) {
+            npc.setInteract(!(npc.isInteract()));
+            npc.setUtilisationCount(npc.getUtilisationCount() + 1);
         }
     }
 }
