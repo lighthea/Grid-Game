@@ -90,7 +90,12 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     public List<DiscreteCoordinates> getCurrentCells() {
         return Collections.singletonList(getCurrentMainCellCoordinates());
     }
-
+    public void stepBack(){
+        if(!isMoving) {
+            setOrientation(getOrientation().opposite());
+            move(ANIMATION_DURATION);
+        }
+    }
     @Override
     public List<DiscreteCoordinates> getFieldOfViewCells() {
         return Arrays.asList(getCurrentMainCellCoordinates().jump(getOrientation().toVector()));
@@ -124,7 +129,6 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
     @Override
     public void update (float deltaTime){
-        System.out.println(sprite.getDepth());
         sameCellAsBefore = !wasMoving || isMoving ;
         if (health <= 0){
             this.getOwnerArea().unregisterActor(this);
@@ -244,7 +248,6 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         }
         @Override
         public void interactWith(EnigmeAI ai) {
-            System.out.println("AI " + ai.getHealth());
             ai.setHealth(ai.getHealth() - 5);
         }
     }

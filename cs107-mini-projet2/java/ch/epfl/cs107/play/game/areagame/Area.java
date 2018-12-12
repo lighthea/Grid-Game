@@ -12,6 +12,7 @@ import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Keyboard;
 import ch.epfl.cs107.play.window.Window;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.function.Predicate;
  * Area is a "Part" of the AreaGame. It is characterized by its AreaBehavior and a List of Actors
  */
 public abstract class Area implements Playable {
-
+    private boolean inPause;
     // Context objects
     private Window window;
     private FileSystem fileSystem;
@@ -205,6 +206,7 @@ public abstract class Area implements Playable {
         this.interactors = new LinkedList<>();
 
         this.isUsed = true;
+        this.inPause = false;
         return true;
     }
 
@@ -215,33 +217,32 @@ public abstract class Area implements Playable {
      * @return (boolean) : if the resume succeed, true by default
      */
     public boolean resume(Window window, FileSystem fileSystem){
+
+        inPause = false;
         return true;
     }
 
     @Override
     public void update(float deltaTime) {
-        purgeRegistration();
-        if (this.actors != null){
-            this.actors.forEach((i) -> i.update(deltaTime));
-            for (Actor i : this.actors) {
-                i.draw(this.window);
-                if (i instanceof Foreground)
-                    System.out.println(((Foreground) i).getSprite().getDepth());
-            }
+        if (! inPause) {
+            purgeRegistration();
+            if (this.actors != null){
+                this.actors.parallelStream().forEach((i) -> i.update(deltaTime));
+                this.actors.forEach((i) -> i.draw(window));
 
-        }
-        if (interactors != null)
-        {
-            for (Interactor interactor :
-                    interactors) {
-                if (interactor.wantsCellInteraction())
-                    this.getAreaBehavior().cellInteractionOf(interactor);
-                if (interactor.wantsViewInteraction())
-                    this.getAreaBehavior().viewInteractionOf(interactor);
             }
+            if (interactors != null)
+            {
+                for (Interactor interactor :
+                        interactors) {
+                    if (interactor.wantsCellInteraction())
+                        this.getAreaBehavior().cellInteractionOf(interactor);
+                    if (interactor.wantsViewInteraction())
+                        this.getAreaBehavior().viewInteractionOf(interactor);
+                }
+            }
+            this.updateCamera();
         }
-        this.updateCamera();
-
     }
     public final boolean leaveAreaCells(Interactable entity ,List <DiscreteCoordinates > coordinates){
         if (this.areaBehavior.canLeave(entity, coordinates)){
@@ -252,13 +253,13 @@ public abstract class Area implements Playable {
     public final boolean enterAreaCells(Interactable entity ,List <DiscreteCoordinates > coordinates){
         if (this.areaBehavior.canEnter(entity, coordinates)){
             this.interactablesToEnter.put(entity, coordinates);
-            return true;}
+            return true;
+        }
         return false;
     }
     private void purgeRegistration() {
         if (this.registeredActors != null){
-            for (Actor i : this.registeredActors) this.addActor(i, false);
-
+            this.registeredActors.forEach((i) -> this.addActor(i, false));
             this.registeredActors.clear();
             }
 
@@ -300,14 +301,22 @@ public abstract class Area implements Playable {
      * Suspend method: Can be overridden, called before resume other
      */
     public void suspend(){
+        inPause = true;
         purgeRegistration();
+
     }
 
     public final void setViewCandidate(Actor a){ this.viewCandidate = a; }
 
     @Override
     public void end() {
-        // TODO save the AreaState somewhere
+            this.actors.forEach((i) -> {
+                try {
+                    fileSystem.write(i.toString() + " " + i.getPosition());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
     }
 }
 

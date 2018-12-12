@@ -65,15 +65,16 @@ public abstract class MovableAreaEntity extends AreaEntity {
      * @param frameForMove (int): number of frames used for simulating motion
      * @return (boolean): returns true if motion can occur
      */
-  
+
     protected  boolean move(int frameForMove){
 
         if (!this.isMoving && !this.getOwnerArea().vetoFromGrid(this, this.getEnteringCells()))
         {
-            System.out.println("Monologuing !");
             this.framesForCurrentMove = frameForMove;
             Vector orientation = getOrientation().toVector();
             targetMainCellCoordinates = getCurrentMainCellCoordinates().jump(orientation);
+            this.getOwnerArea().leaveAreaCells(this, getLeavingCells());
+            this.getOwnerArea().enterAreaCells(this, getEnteringCells());
             isMoving = true;
             return true;
         }
@@ -88,8 +89,6 @@ public abstract class MovableAreaEntity extends AreaEntity {
 
         if(isMoving && ((targetMainCellCoordinates.x != this.getCurrentMainCellCoordinates().x) ||
                         (targetMainCellCoordinates.y != this.getCurrentMainCellCoordinates().y))){
-            /*if(getOwnerArea().enterAreaCells(this, getEnteringCells()))
-                getOwnerArea().leaveAreaCells(this, getLeavingCells());*/
             Vector distance = getOrientation().toVector();
             distance = distance.mul(1.0f / framesForCurrentMove);
             setCurrentPosition(getPosition().add(distance));

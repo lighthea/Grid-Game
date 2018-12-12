@@ -9,6 +9,7 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +23,13 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
     private boolean fixed;
     private DiscreteCoordinates[] path;
     private int currentPathIndex;
+    private int orientationInt, currentFrame;
     private Animation animation;
+    private long lastDamage;
+    private int coolDown;
+    private boolean isAttacking;
+    private boolean canAttack;
+
     public float getHealth() {
         return health;
     }
@@ -39,7 +46,8 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
      * @param orientation (Orientation): Initial orientation of the entity. Not null
      * @param position    (Coordinate): Initial position of the entity. Not null
      */
-    public EnigmeAI(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed,  DiscreteCoordinates... path) {
+    public EnigmeAI(Area area, Orientation orientation, DiscreteCoordinates position, float damages,
+                        boolean fixed, int coolDown, DiscreteCoordinates... path) {
         super(area, orientation, position);
         this.damages = damages;
         this.fixed = fixed;
@@ -49,6 +57,11 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         Vector anchor =new Vector(0.25f, 0.32f) ;
         this.animation = new Animation(this.sprite, anchor, 4, 4, this,1 , 1);
         sprite = animation.getAnimation()[0][0];
+        currentPathIndex = 0;
+        this.handler = new EnigmeAIHandler();
+        this.coolDown = coolDown;
+        lastDamage = System.currentTimeMillis();
+        isAttacking = false;
         resetMotion();
 
     }
@@ -65,13 +78,87 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         if (health <= 0) {
             this.getOwnerArea().unregisterActor(this);
         }
-        if (!fixed && !isMoving){
-           setTargetMainCellCoordinates(path[currentPathIndex + 1]);
-           this.move(ANIMATION_DURATION);
-           currentPathIndex += 1;
-        }
-        setOrientation(Orientation.RIGHT);
+        if (System.currentTimeMillis() - lastDamage > coolDown){
+            this.sprite.setHeight(1.5f);
+            this.sprite.setWidth(1.5f);
+            canAttack = true;
+            lastDamage = System.currentTimeMillis();
+        }else{
 
+            canAttack = false;
+            this.sprite.setHeight(1);
+            this.sprite.setWidth(1);
+        }
+
+        if (!fixed) {
+
+            Vector direction = new Vector(path[currentPathIndex].x - getCurrentMainCellCoordinates().x,
+                    path[currentPathIndex].y - getCurrentMainCellCoordinates().y);
+
+
+            if (!isMoving) {
+
+                if (direction.equals(Orientation.RIGHT.toVector())) {
+                    if (this.getOrientation().equals(Orientation.RIGHT)) {
+                        if(this.move(ANIMATION_DURATION))
+                            currentPathIndex = (currentPathIndex + 1) % path.length;
+                        orientationInt = 3;
+                        return;
+                    } else {
+                        setOrientation(Orientation.RIGHT);
+                        orientationInt = 3;
+                        return;
+                    }
+                }
+
+                if (direction.equals(Orientation.LEFT.toVector())) {
+                    if (this.getOrientation().equals(Orientation.LEFT)) {
+                        if(this.move(ANIMATION_DURATION))
+                            currentPathIndex = (currentPathIndex + 1) % path.length;
+                        orientationInt = 1;
+                        return;
+
+                    } else {
+                        setOrientation(Orientation.LEFT);
+                        orientationInt = 1;
+                        return;
+                    }
+                }
+
+                if (direction.equals(Orientation.DOWN.toVector())) {
+                    if (this.getOrientation().equals(Orientation.DOWN)) {
+                        if(this.move(ANIMATION_DURATION))
+                            currentPathIndex = (currentPathIndex + 1) % path.length;
+                        orientationInt = 0;
+                        return;
+                    } else {
+                        setOrientation(Orientation.DOWN);
+                        orientationInt = 0;
+                        return;
+
+                    }
+                }
+
+                if (direction.equals(Orientation.UP.toVector())) {
+                    if (this.getOrientation().equals(Orientation.UP)) {
+                        if (this.move(ANIMATION_DURATION))
+                            currentPathIndex = (currentPathIndex + 1) % path.length;
+                        orientationInt = 2;
+                        return;
+                    } else {
+                        setOrientation(Orientation.UP);
+                        orientationInt = 2;
+                        return;
+                    }
+                }
+
+            } else {
+                System.out.println(orientationInt);
+                sprite = animation.getAnimation()[orientationInt][currentFrame];
+                currentFrame = (currentFrame + 1) % 4;
+            }
+        }
+        super.update(deltaTime);
     }
     @Override
     public boolean takeCellSpace() {
@@ -85,7 +172,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
 
     @Override
     public boolean isCellInteractable() {
-        return true;
+        return false;
     }
 
     @Override
@@ -108,7 +195,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
 
     @Override
     public boolean wantsViewInteraction() {
-        return true;
+       return !isMoving;
     }
 
     public void acceptInteraction(AreaInteractionVisitor v) {
@@ -117,17 +204,19 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
 
     @Override
     public void interactWith(Interactable other){
-        other.acceptInteraction(handler);
+        if (canAttack) {
+            other.acceptInteraction(handler);
 
+        }
     }
 
     private class EnigmeAIHandler implements EnigmeInteractionVisitor, AreaInteractionVisitor {
 
         @Override
         public void interactWith(EnigmePlayer player) {
-            System.out.println("Player " + player.getHealth());
             player.setHealth(player.getHealth() - damages);
-            player.setTargetMainCellCoordinates(new DiscreteCoordinates(getCurrentMainCellCoordinates().x + 1, getCurrentMainCellCoordinates().y + 1));
+            System.out.println(player.getHealth());
+            player.stepBack();
         }
         @Override
         public void interactWith(EnigmeBehaviour.EnigmeCell cell) {

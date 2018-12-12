@@ -68,10 +68,8 @@ public abstract class AreaBehavior {
             if (b) {
                 b = b && coordToCell(coordinates.get(i)).canEnter(entity);
             } else {
-                System.out.println(b);
                 return false;}
         }
-        System.out.println(b);
         return b;
     }
 
@@ -150,6 +148,7 @@ public abstract class AreaBehavior {
         public void acceptInteraction(AreaInteractionVisitor v) {
             ((EnigmeInteractionVisitor)v).interactWith(this);
         }
+
         public void viewInteractionOf(Interactor interactor){
             for(Interactable interactable  : interactableList){
                 if(interactable.isViewInteractable())

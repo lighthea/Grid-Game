@@ -29,6 +29,7 @@ public class Play {
 		System.setProperty("sun.java2d.ddscale", "true" );//only when using direct3d
 		System.setProperty("sun.java2d.translaccel", "true"); //only when using direct3d
 		// Define cascading file system
+
 		final FileSystem fileSystem = new ResourceFileSystem(DefaultFileSystem.INSTANCE);
 
         // Create a demo game and initialize corresponding texts
@@ -36,7 +37,7 @@ public class Play {
 		XMLTexts.initialize(fileSystem, "strings/enigme_fr.xml");
 
 		// Use Swing display
-		final Window window = new SwingWindow(game.getTitle(), fileSystem, 750, 750);
+		final Window window = new SwingWindow(game.getTitle(), fileSystem, 1920, 1080);
 
 		try {
 

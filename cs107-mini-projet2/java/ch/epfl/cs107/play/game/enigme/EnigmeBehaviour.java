@@ -83,7 +83,7 @@ public class EnigmeBehaviour extends AreaBehavior {
 
         @Override
         public boolean takeCellSpace() {
-            return true;
+            return false;
         }
 
         @Override
