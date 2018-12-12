@@ -131,9 +131,11 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     public void update (float deltaTime){
         sameCellAsBefore = !wasMoving || isMoving ;
         if (health <= 0){
+            this.getOwnerArea().leaveAreaCells(this, getCurrentCells());
             this.getOwnerArea().unregisterActor(this);
         }
-
+        if (health < maxHealth)
+            health = health + 0.01f;
         Keyboard key = getOwnerArea().getKeyboard();
 
         Button downArrow = key.get(Keyboard.DOWN) ;

@@ -39,7 +39,10 @@ public class Enigme extends AreaGame {
             this.getCurrentArea().setViewCandidate(player);
         }
 
-        health.setText(Float.toString((int)healthPercentageMax));
+        health.setFontSize(0.5f);
+
+        health.setText(Float.toString((int)(healthPercentageMax * 100)));
+        health.setDepth(Float.POSITIVE_INFINITY);
         health.draw(getWindow());
     }
 
@@ -76,7 +79,7 @@ public class Enigme extends AreaGame {
         this.getCurrentArea().registerActor(player);
         //this.getCurrentArea().registerActor(apple);
         //this.getCurrentArea().registerActor(door);
-        health = new TextGraphics(Float.toString((int)healthPercentageMax) , 0.03f, Color.GREEN);
+        health = new TextGraphics(Float.toString((int)healthPercentageMax) , 0.03f, Color.RED);
         health.setParent(player);
         health.setAnchor(new Vector(1,1));
         this.getCurrentArea().setViewCandidate(player);

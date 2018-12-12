@@ -35,10 +35,9 @@ public class ile extends EnigmeArea {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
-        /*if (getCameraScaleFactor() >= 15) {
+        if (getCameraScaleFactor() >= 15) {
             scaleFactor = scaleFactor - 1;
-        }*/
-        scaleFactor = 50;
+        }
     }
     @Override
     public boolean begin(Window window, FileSystem fileSystem)  {
@@ -49,7 +48,7 @@ public class ile extends EnigmeArea {
                     , new DiscreteCoordinates(121,71),new DiscreteCoordinates(122,71)
                     , new DiscreteCoordinates(123,71)));
 
-            this.registerActor(new EnigmeAI(this, Orientation.DOWN, new DiscreteCoordinates(98,65), 10, true, 1500));
+            this.registerActor(new EnigmeAI(this, Orientation.DOWN, new DiscreteCoordinates(98,66), 10, true, 1500));
             return true;
 
         } catch (Exception E){

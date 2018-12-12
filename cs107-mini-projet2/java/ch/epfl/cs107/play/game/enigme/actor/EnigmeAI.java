@@ -54,7 +54,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         this.path = path;
         this.sprite = new Sprite("mob.1", 1, 1.f,this) ;
         this.health = maxHealth;
-        Vector anchor =new Vector(0.25f, 0.32f) ;
+        Vector anchor =new Vector(0.0f, 0.0f) ;
         this.animation = new Animation(this.sprite, anchor, 4, 4, this,1 , 1);
         sprite = animation.getAnimation()[0][0];
         currentPathIndex = 0;
