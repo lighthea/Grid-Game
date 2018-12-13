@@ -11,6 +11,11 @@ import ch.epfl.cs107.play.window.Canvas;
 import java.util.List;
 
 public class interactiveButton extends Door {
+    public boolean isHasBeenPressed() {
+        return hasBeenPressed;
+    }
+
+    private boolean hasBeenPressed;
     /**
      * Default AreaEntity constructor
      *
@@ -23,6 +28,7 @@ public class interactiveButton extends Door {
      */
     public interactiveButton(Area area, String destination, DiscreteCoordinates tpCoordiinate, Orientation orientation, DiscreteCoordinates position, List<DiscreteCoordinates> otherPositions) {
         super(area, destination, tpCoordiinate, orientation, position, otherPositions);
+        hasBeenPressed = false;
     }
     @Override
     public boolean isViewInteractable() {
@@ -42,5 +48,6 @@ public class interactiveButton extends Door {
     @Override
     public void acceptInteraction(AreaInteractionVisitor v) {
         ((EnigmeInteractionVisitor)v).interactWith((Door)this);
+        hasBeenPressed = true;
     }
 }

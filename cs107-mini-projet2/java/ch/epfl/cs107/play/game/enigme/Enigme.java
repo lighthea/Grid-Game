@@ -3,12 +3,10 @@ package ch.epfl.cs107.play.game.enigme;
 import ch.epfl.cs107.play.game.actor.TextGraphics;
 import ch.epfl.cs107.play.game.areagame.AreaGame;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
-import ch.epfl.cs107.play.game.enigme.actor.Apple;
-import ch.epfl.cs107.play.game.enigme.actor.Door;
 import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
+import ch.epfl.cs107.play.game.enigme.area.grotteOrcs;
 import ch.epfl.cs107.play.game.enigme.area.*;
 import ch.epfl.cs107.play.io.FileSystem;
-import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
 
@@ -17,8 +15,6 @@ import java.awt.*;
 public class Enigme extends AreaGame {
 
     private EnigmePlayer player;
-    private Apple apple;
-    private Door door;
     private float healthPercentageMax;
     private TextGraphics health;
     @Override
@@ -62,10 +58,16 @@ public class Enigme extends AreaGame {
         this.addArea(new ile());
         this.addArea(new Prasinateratapolis());
         this.addArea(new templeMaya());
+        this.addArea(new grotteOrcs());
+        this.addArea(new Lavamountain());
+        this.addArea(new MaisonAraignée());
+        this.addArea(new Peristerapolis());
+        this.addArea(new Grotte());
+        this.addArea(new Dendropolis());
 
         this.setCurrentArea("templeMaya", true);
 
-        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint() );
+        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint());
         this.getCurrentArea().registerActor(player);
 
         healthPercentageMax = player.getHealth()/player.maxHealth;

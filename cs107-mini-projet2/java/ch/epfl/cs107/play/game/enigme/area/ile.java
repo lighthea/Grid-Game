@@ -1,27 +1,37 @@
 package ch.epfl.cs107.play.game.enigme.area;
 
+import ch.epfl.cs107.play.game.areagame.actor.Background;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
+import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.game.enigme.actor.*;
 import ch.epfl.cs107.play.io.FileSystem;
+import ch.epfl.cs107.play.io.ResourceFileSystem;
 import ch.epfl.cs107.play.io.XMLTexts;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ile extends EnigmeArea {
 
     public String getTitle() {
         return "ile";
     }
-    public int getScaleFactor() {
-        return scaleFactor;
-    }
 
     public void setScaleFactor(int scaleFactor) {
         this.scaleFactor = scaleFactor;
     }
 
+    public final DiscreteCoordinates spawnPoint = new DiscreteCoordinates(130,70);
+    @Override
+    public DiscreteCoordinates getSpawnPoint() {
+        return spawnPoint;
+    }
+
     private int scaleFactor = 15;
+
     public void setViewCenter(Vector viewCenter) {
         this.viewCenter = viewCenter;
     }
@@ -37,17 +47,20 @@ public class ile extends EnigmeArea {
     @Override
     public boolean begin(Window window, FileSystem fileSystem)  {
         try {
-            XMLTexts.initialize(fileSystem,"strings/enigme_fr" );
+
             super.begin(window, fileSystem);
-            this.registerActor(new EnigmeAI(this, Orientation.RIGHT, new DiscreteCoordinates(125, 71), 10, false,1500,
-                    new DiscreteCoordinates(124,71),new DiscreteCoordinates(123,71), new DiscreteCoordinates(122,71)
-                    , new DiscreteCoordinates(121,71),new DiscreteCoordinates(122,71)
-                    , new DiscreteCoordinates(123,71)));
-            this.registerActor(new patapon(this, Orientation.DOWN, new DiscreteCoordinates(98,66), 0,
-                                            true, 0, new String[]{XMLTexts.getText("inspect_signalrock")}, false));
+            this.registerActor(new Door(this,"Grotte", new DiscreteCoordinates(20,4),
+                    Orientation.DOWN, new DiscreteCoordinates(98,66), Arrays.asList(new DiscreteCoordinates(98,66))));
+            this.registerActor(new Door(this,"Peristerapolis", new DiscreteCoordinates(99,44),
+                    Orientation.DOWN, new DiscreteCoordinates(42,35), Arrays.asList(new DiscreteCoordinates(42,35))));
+            this.registerActor(new Door(this,"Lavamountain", new DiscreteCoordinates(16,5),
+                    Orientation.DOWN, new DiscreteCoordinates(93,23), Arrays.asList(new DiscreteCoordinates(93,23))));
+            this.registerActor(new Door(this,"Grotte", new DiscreteCoordinates(20,4),
+                    Orientation.DOWN, new DiscreteCoordinates(98,74), Arrays.asList(new DiscreteCoordinates(98,74))));
             return true;
 
         } catch (Exception E){
+
 
             System.out.println("Error  : "+ E);
             return false;

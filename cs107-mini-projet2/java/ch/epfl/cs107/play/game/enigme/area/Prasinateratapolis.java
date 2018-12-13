@@ -56,28 +56,30 @@ public class Prasinateratapolis extends EnigmeArea {
                     false));
 
             this.registerActor(new Plebe(this, Orientation.RIGHT, new DiscreteCoordinates(84, 29), 0,
-                    true, 0, new String[]{"Les... les... je n'arrives pas à prononcer leurs noms je ne suis pas " +
+                    true, 0, new String[]{"Les... les... je n'arrives pas à prononcer leurs noms je ne suis pas en " +
                     " en utf-16 moi !"},
                     false));
             this.registerActor(new Plebe(this, Orientation.RIGHT, new DiscreteCoordinates(81, 29), 0,
-                    true, 0, new String[]{"Quand est-ce que cette folie prendra fin..."},
+                    true, 0, new String[]{"Quand est-ce que cette folie prendra fin... Ils nous ont volé nos femmes, nos fils, nos filles... NOS GYROSCOPES !"},
                     false));
             this.registerActor(new Plebe(this, Orientation.RIGHT, new DiscreteCoordinates(78, 29), 0,
-                    true, 0, new String[]{"Et dire qu'avant on vivait tranquillement les equationd'eh mouvement"},
+                    true, 0, new String[]{"Et dire qu'avant on vivait tranquillement avec les equationd'eh mouvement"},
                     false));
             this.registerActor(new Plebe(this, Orientation.RIGHT, new DiscreteCoordinates(87, 29), 0,
                     true, 0, new String[]{"Je ne suis pas venu pour souffrir okay !"},
                     false));
             this.registerActor(new Plebe(this, Orientation.RIGHT, new DiscreteCoordinates(90, 29), 0,
-                    true, 0, new String[]{"Allez trouver M. Fürbringar, il saura quoi faire..."},
+                    true, 0, new String[]{"Allez trouver M. Fürbringar, il saura quoi faire... Sauf si il vous parle de changement de repère ! Ne le suivez pas !"},
                     false));
 
             this.registerActor(new Furbringar(this, Orientation.RIGHT, new DiscreteCoordinates(41+64, 29), 0,
                     true, 0, new String[]{"Les diff'Ehrentzielles... comment nommer de telles abominations...",
             "Nul ne sait d'ou ils viennent... ni ce qu'ils sont, mais si vous voulez mon avis..."," ils viennent juste d'à côté ",
             "et ils sont plutot verts", " Je vous propose de m'aider à en finir avec eux... mais pour cela il faudrait encore ",
-            "pouvoir sauver nos chers amis prisonniers de ces monstres !","Pour cela il vous faudra traverser la rame de train",
-            "Pour cela je vais user de mon pouvoir...", "Le changement de coordonées !"},
+            "pouvoir sauver nos chers amis prisonniers de ces monstres !","Je compte me servir de la nutation de l'axe coaxial de la terre pour",
+                    "me calibrer avec le centre de masse de notre galaxie et catapulter cette balle de ping pong", "à une vitesse " +
+                    "supra-luminique...","Pour cela il vous faudra traverser la rame de train",
+            "Et pour vous aider je vais donc... user de mon pouvoir...", "Le changement de coordonées ! Repère Circulaire vient à moi !"},
                     false));
 
             this.registerActor(new EnigmeAI(this, Orientation.DOWN, new DiscreteCoordinates(70, 16), 15, false, 2000,
