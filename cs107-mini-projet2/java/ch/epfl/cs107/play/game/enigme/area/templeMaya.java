@@ -11,8 +11,6 @@ import ch.epfl.cs107.play.window.Window;
 import java.util.Arrays;
 
 public class templeMaya extends EnigmeArea {
-    private interactiveButton b1, b2;
-    private Bahamut boss;
     public String getTitle() {
         return "templeMaya";
     }
@@ -31,10 +29,7 @@ public class templeMaya extends EnigmeArea {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
-        if (b1.isHasBeenPressed() || b2.isHasBeenPressed()) {
-            leaveAreaCells(boss, boss.getCurrentCells());
-            unregisterActor(boss);
-        }
+
     }
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
@@ -110,10 +105,11 @@ public class templeMaya extends EnigmeArea {
 
 
 
-            b1 = new interactiveButton(this, "templeMaya", new DiscreteCoordinates(16, 77), Orientation.DOWN,
-                    new DiscreteCoordinates(17, 6), Arrays.asList(new DiscreteCoordinates(17, 6)));
-            b2 = new interactiveButton(this, "bossFinal", new DiscreteCoordinates(16,16), Orientation.DOWN,
-                    new DiscreteCoordinates(16, 6), Arrays.asList(new DiscreteCoordinates(16, 6)));
+            this.registerActor( new interactiveButton(this, "templeMaya", new DiscreteCoordinates(16, 77), Orientation.DOWN,
+                    new DiscreteCoordinates(17, 5), Arrays.asList(new DiscreteCoordinates(17, 5))));
+
+            this.registerActor( new interactiveButton(this, "bossFinal", new DiscreteCoordinates(16,16), Orientation.DOWN,
+                    new DiscreteCoordinates(16, 5), Arrays.asList(new DiscreteCoordinates(16, 5))));
 
             registerActor(new patapon(this, Orientation.DOWN, new DiscreteCoordinates(16, 19), 0, true, 0,
                     new String[]{"Ce n'est pas la récompense qui compte mais l'effort... gnagna gna gnagna gna"},false));

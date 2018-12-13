@@ -11,6 +11,8 @@ import ch.epfl.cs107.play.window.Window;
 public class bossFinal extends EnigmeArea {
     private pressureSwitch p1, p2, p3, p4, p5;
     private spider boss;
+    private boolean finished;
+
     public String getTitle() {
         return "bossFinal";
     }
@@ -39,8 +41,10 @@ public class bossFinal extends EnigmeArea {
     public void update(float deltaTime) {
 
         super.update(deltaTime);
-        if (p1.is(p2, 1) && p1.is(p2, 1)&& p1.is(p5, 1)&& p1.is(p4, 1)&& p1.is(p3, 1))
+        if (p1.is(p2, 1) && p1.is(p2, 1)&& p1.is(p5, 1)&& p1.is(p4, 1)&& p1.is(p3, 1)) {
             this.unregisterActor(boss);
+            this.finished = true;
+        }
     }
     @Override
     public boolean begin(Window window, FileSystem fileSystem)  {
@@ -117,5 +121,9 @@ public class bossFinal extends EnigmeArea {
 
         }
 
+    }
+
+    public boolean isFinished() {
+        return finished;
     }
 }

@@ -12,6 +12,8 @@ import ch.epfl.cs107.play.window.Window;
 
 import java.awt.*;
 
+import static java.lang.System.exit;
+
 public class Enigme extends AreaGame {
 
     private EnigmePlayer player;
@@ -41,6 +43,19 @@ public class Enigme extends AreaGame {
         health.setText(Float.toString((int)(healthPercentageMax * 100)));
         health.setDepth(Float.POSITIVE_INFINITY);
         health.draw(getWindow());
+
+        if (this.getCurrentArea() instanceof bossFinal)
+            if (((bossFinal)this.getCurrentArea()).isFinished()) {
+                health.setText("CONGRATULATIONS !!!");
+                health.setFontSize(10);
+                health.draw(getWindow());
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                exit(0);
+            }
     }
 
     @Override
@@ -60,7 +75,6 @@ public class Enigme extends AreaGame {
         this.addArea(new templeMaya());
         this.addArea(new grotteOrcs());
         this.addArea(new Lavamountain());
-        this.addArea(new MaisonAraignée());
         this.addArea(new Peristerapolis());
         this.addArea(new Grotte());
         this.addArea(new Dendropolis());
