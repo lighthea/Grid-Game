@@ -65,6 +65,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         resetMotion();
 
     }
+    protected float initialWidth, initialRise;
     @Override
     public boolean uniqueInteractable(){
         return true;
@@ -79,15 +80,15 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
             this.getOwnerArea().unregisterActor(this);
         }
         if (System.currentTimeMillis() - lastDamage > coolDown){
-            this.sprite.setHeight(1.5f);
-            this.sprite.setWidth(1.5f);
+            this.sprite.setHeight((float)1.5*initialRise  );
+            this.sprite.setWidth((float)1.5*initialWidth);
             canAttack = true;
             lastDamage = System.currentTimeMillis();
         }else{
 
             canAttack = false;
-            this.sprite.setHeight(1);
-            this.sprite.setWidth(1);
+            this.sprite.setHeight(initialRise);
+            this.sprite.setWidth(initialWidth);
         }
 
         if (!fixed) {
@@ -98,7 +99,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
 
             if (!isMoving) {
 
-                if (direction.equals(Orientation.RIGHT.toVector())) {
+                if ((direction.x == (Orientation.RIGHT.toVector().x) && (direction.y == (Orientation.RIGHT.toVector().y)))) {
                     if (this.getOrientation().equals(Orientation.RIGHT)) {
                         if(this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -111,7 +112,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                     }
                 }
 
-                if (direction.equals(Orientation.LEFT.toVector())) {
+                if ((direction.x == (Orientation.LEFT.toVector().x) && (direction.y == (Orientation.LEFT.toVector().y)))) {
                     if (this.getOrientation().equals(Orientation.LEFT)) {
                         if(this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -125,7 +126,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                     }
                 }
 
-                if (direction.equals(Orientation.DOWN.toVector())) {
+                if ((direction.x == (Orientation.DOWN.toVector().x) && (direction.y == (Orientation.DOWN.toVector().y)))) {
                     if (this.getOrientation().equals(Orientation.DOWN)) {
                         if(this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -139,7 +140,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                     }
                 }
 
-                if (direction.equals(Orientation.UP.toVector())) {
+                if ((direction.x == (Orientation.UP.toVector().x) && (direction.y == (Orientation.UP.toVector().y)))) {
                     if (this.getOrientation().equals(Orientation.UP)) {
                         if (this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;

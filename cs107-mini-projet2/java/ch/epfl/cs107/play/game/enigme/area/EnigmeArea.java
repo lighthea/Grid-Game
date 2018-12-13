@@ -5,6 +5,7 @@ import ch.epfl.cs107.play.game.areagame.actor.Background;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.io.FileSystem;
+import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
 
@@ -12,6 +13,13 @@ public class EnigmeArea extends Area {
     public int getScaleFactor() {
         return scaleFactor;
     }
+
+
+    public DiscreteCoordinates getSpawnPoint() {
+        return spawnPoint;
+    }
+
+    private final DiscreteCoordinates spawnPoint = new DiscreteCoordinates(0,0);
 
     public void setScaleFactor(int scaleFactor) {
         this.scaleFactor = scaleFactor;
@@ -36,7 +44,7 @@ public class EnigmeArea extends Area {
         try {
             super.begin(window, fileSystem);
             this.setAreaBehavior(new EnigmeBehaviour(window, this.getTitle()));
-            while (!this.registerActor(new Foreground(this)))
+            this.registerActor(new Foreground(this));
                 System.out.println("Loading Foreground...");
             while (!this.registerActor(new Background(this)))
                 System.out.println("Loading Foreground...");

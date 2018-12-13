@@ -34,7 +34,7 @@ public abstract class Area implements Playable {
     private List<Actor> actors;
     private List<Interactor> interactors;
 
-    private List<Actor> registeredActors;
+    protected List<Actor> registeredActors;
     private List<Actor> unregisteredActors;
 
     // Camera Parameter

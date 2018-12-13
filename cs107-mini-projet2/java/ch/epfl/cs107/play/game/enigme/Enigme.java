@@ -30,7 +30,7 @@ public class Enigme extends AreaGame {
     public void update (float deltaTime){
         super.update(deltaTime);
         healthPercentageMax = player.getHealth() / player.maxHealth;
-
+        System.out.println(player.getCurrentCells().get(0).x + "" + player.getCurrentCells().get(0).y);
         if (player.isPassingDoor()) {
             this.setCurrentArea(player.getLastDoor().getDestinationArea(), false);
             player.enterArea(getCurrentArea(), player.getLastDoor().getLandingCoordinates());
@@ -58,16 +58,16 @@ public class Enigme extends AreaGame {
         this.addArea(new Level2());
         this.addArea(new Level3());
         this.addArea(new ile());
+        this.addArea(new Lavamountain());
+        this.addArea(new Dendropolis());
+        this.addArea(new Peristerapolis());
+        this.addArea(new Grotte());
 
-        DiscreteCoordinates coordinates = new DiscreteCoordinates(0, 0);
-        this.setCurrentArea("ile", true);
-        for (int i = 0; i < getCurrentArea().getAreaBehavior().getCells().length; i++)
-            for (int j = 0; j < getCurrentArea().getAreaBehavior().getCells()[0].length; j++) {
-                if (((EnigmeBehaviour) (getCurrentArea().getAreaBehavior())).getCellNature(new DiscreteCoordinates(i, j)) == -1)
-                    coordinates = (getCurrentArea().getAreaBehavior().getCells()[i][j]).getCoordinates();
-            }
+        DiscreteCoordinates coordinates = new DiscreteCoordinates(10, 10);
+        this.setCurrentArea("Grotte", true);
 
-        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, coordinates);
+
+        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint());
         //apple = new Apple(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,6));
         //List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)));
 
