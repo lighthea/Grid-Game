@@ -10,7 +10,12 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Canvas;
 
 public class EnigmeNPC extends EnigmeAI {
-    private final boolean isActive;
+    protected final boolean isActive;
+
+    public Dialog[] getDialog() {
+        return dialog;
+    }
+
     private Dialog[] dialog;
 
     public void setUtilisationCount(int utilisationCount) {
@@ -21,7 +26,7 @@ public class EnigmeNPC extends EnigmeAI {
         return utilisationCount;
     }
 
-    private int utilisationCount;
+    protected int utilisationCount;
 
     public void setInteract(boolean interact) {
         this.interact = interact;
@@ -69,14 +74,10 @@ public class EnigmeNPC extends EnigmeAI {
     public void draw (Canvas canvas){
         super.draw(canvas);
         if (interact){
-            System.out.println(utilisationCount - 1);
+
             dialog[(utilisationCount - 1)%dialog.length].draw(canvas);
             this.getOwnerArea().suspend();
-        }else {
-
         }
-
-
     }
     private class EnigmeNPCHandler implements EnigmeInteractionVisitor, AreaInteractionVisitor {
 

@@ -226,6 +226,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
         other.acceptInteraction(handler);
     }
 
+
     private class EnigmePlayerHandler implements EnigmeInteractionVisitor, AreaInteractionVisitor {
 
         @Override
@@ -259,8 +260,31 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
         @Override
         public void interactWith(EnigmeNPC npc) {
+            if (npc instanceof Furbringar){
+                interactWith((Furbringar) npc);
+                return;
+            }
+
             npc.setInteract(!(npc.isInteract()));
             npc.setUtilisationCount(npc.getUtilisationCount() + 1);
+        }
+        @Override
+        public void interactWith(Furbringar fur) {
+            fur.setInteract(!(fur.isInteract()));
+            fur.setUtilisationCount(fur.getUtilisationCount() + 1);
+            if (fur.getUtilisationCount() % fur.getDialog().length == 0) {
+                setPassingDoor(true);
+                setLastDoor(fur.getDoor());
+            }
+        }
+        @Override
+        public void interactWith(pressureSwitch pswitch) {
+
+        }
+        @Override
+        public void interactWith(interactiveButton button) {
+            System.out.println("Conversion");
+            this.interactWith((Door)button);
         }
     }
 }

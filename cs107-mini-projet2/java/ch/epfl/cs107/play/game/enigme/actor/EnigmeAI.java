@@ -17,19 +17,18 @@ import java.util.List;
 public class EnigmeAI extends MovableAreaEntity implements Interactor {
     public final float maxHealth = 100;
     protected Sprite sprite;
-    private final static int ANIMATION_DURATION = 8 ;
+    protected final static int ANIMATION_DURATION = 8 ;
     protected EnigmeInteractionVisitor handler;
     protected float damages;
-    private boolean fixed;
-    private DiscreteCoordinates[] path;
-    private int currentPathIndex;
-    private int orientationInt, currentFrame;
+    protected boolean fixed;
+    protected DiscreteCoordinates[] path;
+    protected int currentPathIndex;
+    protected int orientationInt, currentFrame;
     protected Animation animation;
-    private long lastDamage;
+    protected long lastDamage;
     protected int coolDown;
-    private boolean isAttacking;
-    private boolean canAttack;
-
+    protected boolean canAttack;
+    protected float initialWidth, initialHeigth;
     public float getHealth() {
         return health;
     }
@@ -38,7 +37,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         this.health = health;
     }
 
-    private float health;
+    protected float health;
     /**
      * Default MovableAreaEntity constructor
      *
@@ -61,7 +60,8 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         this.handler = new EnigmeAIHandler();
         this.coolDown = coolDown;
         lastDamage = System.currentTimeMillis();
-        isAttacking = false;
+        initialHeigth = 1;
+        initialWidth = 1;
         resetMotion();
 
     }
@@ -79,15 +79,15 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
             this.getOwnerArea().unregisterActor(this);
         }
         if (System.currentTimeMillis() - lastDamage > coolDown){
-            this.sprite.setHeight(1.5f);
-            this.sprite.setWidth(1.5f);
+            this.sprite.setHeight(initialHeigth*1.5f);
+            this.sprite.setWidth(initialWidth* 1.5f);
             canAttack = true;
             lastDamage = System.currentTimeMillis();
         }else{
 
             canAttack = false;
-            this.sprite.setHeight(1);
-            this.sprite.setWidth(1);
+            this.sprite.setHeight(initialHeigth);
+            this.sprite.setWidth(initialWidth);
         }
 
         if (!fixed) {
@@ -95,10 +95,9 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
             Vector direction = new Vector(path[currentPathIndex].x - getCurrentMainCellCoordinates().x,
                     path[currentPathIndex].y - getCurrentMainCellCoordinates().y);
 
-
             if (!isMoving) {
 
-                if (direction.equals(Orientation.RIGHT.toVector())) {
+                if (direction.x == (Orientation.RIGHT.toVector()).x && direction.y == (Orientation.RIGHT.toVector()).y) {
                     if (this.getOrientation().equals(Orientation.RIGHT)) {
                         if(this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -111,7 +110,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                     }
                 }
 
-                if (direction.equals(Orientation.LEFT.toVector())) {
+                if (direction.x == (Orientation.LEFT.toVector()).x && direction.y == (Orientation.LEFT.toVector()).y) {
                     if (this.getOrientation().equals(Orientation.LEFT)) {
                         if(this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -125,7 +124,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                     }
                 }
 
-                if (direction.equals(Orientation.DOWN.toVector())) {
+                if (direction.x == (Orientation.DOWN.toVector()).x && direction.y == (Orientation.DOWN.toVector()).y) {
                     if (this.getOrientation().equals(Orientation.DOWN)) {
                         if(this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -139,7 +138,7 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
                     }
                 }
 
-                if (direction.equals(Orientation.UP.toVector())) {
+                if (direction.x == (Orientation.UP.toVector()).x && direction.y == (Orientation.UP.toVector()).y) {
                     if (this.getOrientation().equals(Orientation.UP)) {
                         if (this.move(ANIMATION_DURATION))
                             currentPathIndex = (currentPathIndex + 1) % path.length;
@@ -214,7 +213,6 @@ public class EnigmeAI extends MovableAreaEntity implements Interactor {
         @Override
         public void interactWith(EnigmePlayer player) {
             player.setHealth(player.getHealth() - damages);
-            System.out.println(player.getHealth());
             player.stepBack();
         }
         @Override

@@ -1,18 +1,12 @@
 package ch.epfl.cs107.play.game.enigme.area;
 
-import ch.epfl.cs107.play.game.areagame.actor.Background;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
-import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
 import ch.epfl.cs107.play.game.enigme.actor.*;
 import ch.epfl.cs107.play.io.FileSystem;
-import ch.epfl.cs107.play.io.ResourceFileSystem;
 import ch.epfl.cs107.play.io.XMLTexts;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 public class ile extends EnigmeArea {
 

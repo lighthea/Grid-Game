@@ -37,6 +37,10 @@ public class pressureSwitch extends AreaEntity implements Interactable, Signal {
     }
 
     @Override
+    public boolean uniqueInteractable(){
+        return true;
+    }
+    @Override
     public boolean isViewInteractable() {
         return false;
     }
@@ -74,6 +78,6 @@ public class pressureSwitch extends AreaEntity implements Interactable, Signal {
 
     @Override
     public boolean is(Signal other, float t) {
-        return intensity == t;
+        return intensity == t && other.getIntensity(t) == t;
     }
 }

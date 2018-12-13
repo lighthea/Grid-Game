@@ -32,9 +32,11 @@ public class Enigme extends AreaGame {
         healthPercentageMax = player.getHealth() / player.maxHealth;
 
         if (player.isPassingDoor()) {
+            this.getCurrentArea().leaveAreaCells(this.player, player.getCurrentCells());
             this.setCurrentArea(player.getLastDoor().getDestinationArea(), false);
             player.enterArea(getCurrentArea(), player.getLastDoor().getLandingCoordinates());
             player.setPassingDoor(false);
+            player.setLastDoor(null);
             this.getCurrentArea().setViewCandidate(player);
         }
 
@@ -56,31 +58,21 @@ public class Enigme extends AreaGame {
         this.addArea(new LevelSelector());
         this.addArea(new Level1());
         this.addArea(new Level2());
-        this.addArea(new Level3());
+        this.addArea(new bossFinal());
         this.addArea(new ile());
+        this.addArea(new Prasinateratapolis());
+        this.addArea(new templeMaya());
 
-        DiscreteCoordinates coordinates = new DiscreteCoordinates(0, 0);
-        this.setCurrentArea("ile", true);
-        for (int i = 0; i < getCurrentArea().getAreaBehavior().getCells().length; i++)
-            for (int j = 0; j < getCurrentArea().getAreaBehavior().getCells()[0].length; j++) {
-                if (((EnigmeBehaviour) (getCurrentArea().getAreaBehavior())).getCellNature(new DiscreteCoordinates(i, j)) == -1)
-                    coordinates = (getCurrentArea().getAreaBehavior().getCells()[i][j]).getCoordinates();
-            }
+        this.setCurrentArea("templeMaya", true);
 
-        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, coordinates);
-        //apple = new Apple(getCurrentArea(), Orientation.DOWN, new DiscreteCoordinates(5,6));
-        //List<DiscreteCoordinates> DoorCoord = Arrays.asList((new DiscreteCoordinates(6,7)));
-
-        //door = new Door(getCurrentArea(), "Level1", new DiscreteCoordinates(5,5),Orientation.DOWN,
-          //      new DiscreteCoordinates(6,7),
-          //      DoorCoord);
-        healthPercentageMax = player.getHealth()/player.maxHealth;
+        player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint() );
         this.getCurrentArea().registerActor(player);
-        //this.getCurrentArea().registerActor(apple);
-        //this.getCurrentArea().registerActor(door);
+
+        healthPercentageMax = player.getHealth()/player.maxHealth;
         health = new TextGraphics(Float.toString((int)healthPercentageMax) , 0.03f, Color.RED);
         health.setParent(player);
         health.setAnchor(new Vector(1,1));
+
         this.getCurrentArea().setViewCandidate(player);
         return true;
     }

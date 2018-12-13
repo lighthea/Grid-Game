@@ -6,7 +6,7 @@ import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 
-public class patapon extends EnigmeNPC {
+public class Plebe extends EnigmeNPC {
     /**
      * Default MovableAreaEntity constructor
      *
@@ -20,18 +20,14 @@ public class patapon extends EnigmeNPC {
      * @param active
      * @param path        the path to follow
      */
-    public patapon(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed, int coolDown, String[] dialogText, boolean active, DiscreteCoordinates... path) {
+    public Plebe(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed, int coolDown, String[] dialogText, boolean active, DiscreteCoordinates... path) {
         super(area, orientation, position, damages, fixed, coolDown, dialogText, active, path);
-        this.sprite = new Sprite("flying.mob.1", 0.5f, .5f,this);
-        this.animation = new Animation(this.sprite, new Vector(0, 0), 4, 4, this,.5f , .5f);
-        sprite = animation.getAnimation()[0][0];
+        initialHeigth = .55f;
+        initialWidth = .55f;
 
-    }
-    @Override
-    public void update (float deltaTime){
-        super.update(deltaTime);
-        if (!isInteract())
-            if (getUtilisationCount() > 0)
-                this.getOwnerArea().unregisterActor(this);
-    }
+        this.sprite = new Sprite("boy.2", 1f, 1f, this);
+        Vector anchor =new Vector(1/6f, 1/3f);
+
+        this.animation = new Animation(this.sprite, anchor, 4, 4, this,3f , 3f);
+        sprite = animation.getAnimation()[0][0];    }
 }
