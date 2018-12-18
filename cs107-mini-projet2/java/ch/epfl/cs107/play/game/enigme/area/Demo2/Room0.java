@@ -37,7 +37,7 @@ public class Room0 extends Area {
             super.begin(window, fileSystem);
             setAreaBehavior(new Demo2Behavior(window, getTitle()));
             registerActor(new Background(this));
-            setViewCenter(viewCenter); // c'est full de la triche mais ca run
+            setViewCenter(viewCenter);
             return true;
         } catch (Exception E){
             System.out.println("Error  : "+ E);

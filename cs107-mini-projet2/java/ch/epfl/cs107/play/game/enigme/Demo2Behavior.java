@@ -85,6 +85,7 @@ public class Demo2Behavior extends AreaBehavior {
             if ((this.nature.type == -16777216 || this.nature.type == -16776961 || this.nature.type == 0 )&& !super.canEnter(entity)) {
                 System.out.println(Demo2CellType.toType(nature.type).toString());
                 return false;
+
             } else if (this.nature.type == -65536){
                 if (entity instanceof Demo2Player) {
                     ((Demo2Player) entity).setThroughDoor(true);
@@ -92,8 +93,7 @@ public class Demo2Behavior extends AreaBehavior {
                 }
                 return false;
             }
-            System.out.println(Demo2CellType.toType(nature.type).toString());
-            return true;
+            return false;
         }
 
         @Override

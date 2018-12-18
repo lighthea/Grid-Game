@@ -49,7 +49,6 @@ public class bossFinal extends EnigmeArea {
     @Override
     public boolean begin(Window window, FileSystem fileSystem)  {
         try {
-            XMLTexts.initialize(fileSystem,"strings/enigme_fr" );
             super.begin(window, fileSystem);
 
             this.registerActor(new EnigmeAI(this,Orientation.UP, new DiscreteCoordinates(10,72), 10,

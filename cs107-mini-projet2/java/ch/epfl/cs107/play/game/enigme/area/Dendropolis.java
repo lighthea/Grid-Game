@@ -66,7 +66,6 @@ public class Dendropolis extends EnigmeArea {
     @Override
     public boolean begin(Window window, FileSystem fileSystem)  {
         try {
-            XMLTexts.initialize(fileSystem,"strings/enigme_fr" );
             super.begin(window, fileSystem);
             registerActor(LeavingDoor);
             registerActor(lochowsko);

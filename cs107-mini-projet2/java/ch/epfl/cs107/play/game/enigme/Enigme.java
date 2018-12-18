@@ -44,16 +44,18 @@ public class Enigme extends AreaGame {
         health.setDepth(Float.POSITIVE_INFINITY);
         health.draw(getWindow());
 
+        if (player.getHealth() <= 0){
+            getCurrentArea().unregisterActor(player);
+            player.enterArea(this.getCurrentArea(), ((EnigmeArea)getCurrentArea()).getSpawnPoint());
+            getCurrentArea().registerActor(player);
+            player.setHealth(100);
+        }
+
         if (this.getCurrentArea() instanceof bossFinal)
             if (((bossFinal)this.getCurrentArea()).isFinished()) {
                 health.setText("CONGRATULATIONS !!!");
                 health.setFontSize(10);
                 health.draw(getWindow());
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 exit(0);
             }
     }
@@ -66,9 +68,7 @@ public class Enigme extends AreaGame {
     @Override
     public boolean begin(Window window, FileSystem fileSystem) {
         super.begin(window, fileSystem);
-        this.addArea(new LevelSelector());
-        this.addArea(new Level1());
-        this.addArea(new Level2());
+
         this.addArea(new bossFinal());
         this.addArea(new ile());
         this.addArea(new Prasinateratapolis());
@@ -79,7 +79,7 @@ public class Enigme extends AreaGame {
         this.addArea(new Grotte());
         this.addArea(new Dendropolis());
 
-        this.setCurrentArea("templeMaya", true);
+        this.setCurrentArea("prasinatefratapolis", true);
 
         player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint());
         this.getCurrentArea().registerActor(player);
