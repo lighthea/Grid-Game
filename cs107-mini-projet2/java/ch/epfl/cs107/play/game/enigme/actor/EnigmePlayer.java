@@ -156,6 +156,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                 } else {
                     setOrientation(Orientation.DOWN);
                     orientationInt = 0;
+                    sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
                     return;
                 }
             }
@@ -169,6 +170,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                 else {
                     setOrientation(Orientation.UP);
                     orientationInt = 2;
+                    sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
                     return;
                 }
             }
@@ -180,6 +182,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                 } else {
                     setOrientation(Orientation.RIGHT);
                     orientationInt = 3;
+                    sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
                     return;
                 }
             }
@@ -191,8 +194,10 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
                 } else {
                     setOrientation(Orientation.LEFT);
                     orientationInt = 1;
+                    sprite = animationSprite.getAnimation()[orientationInt][currentFrame];
                     return;
                 }
+
             }
 
         } else {
@@ -208,7 +213,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
     public Door getLastDoor() {
         return lastDoor;
     }
-
+    public void die (){
+        this.getOwnerArea().leaveAreaCells(this, this.getCurrentCells());
+        this.getOwnerArea().unregisterActor(this);
+        try {
+            super.finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+    }
     public void setLastDoor(Door lastDoor) {
         this.lastDoor = lastDoor;
     }

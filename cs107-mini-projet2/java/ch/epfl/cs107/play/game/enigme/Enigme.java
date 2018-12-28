@@ -3,16 +3,17 @@ package ch.epfl.cs107.play.game.enigme;
 import ch.epfl.cs107.play.game.actor.TextGraphics;
 import ch.epfl.cs107.play.game.areagame.AreaGame;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
+import ch.epfl.cs107.play.game.enigme.actor.Constance;
 import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
+import ch.epfl.cs107.play.game.enigme.area.maisonAraignee;
 import ch.epfl.cs107.play.game.enigme.area.grotteOrcs;
 import ch.epfl.cs107.play.game.enigme.area.*;
 import ch.epfl.cs107.play.io.FileSystem;
+import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
 
 import java.awt.*;
-
-import static java.lang.System.exit;
 
 public class Enigme extends AreaGame {
 
@@ -27,6 +28,7 @@ public class Enigme extends AreaGame {
     @Override
     public void update (float deltaTime){
         super.update(deltaTime);
+        System.out.println(player.getCurrentCells());
         healthPercentageMax = player.getHealth() / player.maxHealth;
 
         if (player.isPassingDoor()) {
@@ -45,18 +47,22 @@ public class Enigme extends AreaGame {
         health.draw(getWindow());
 
         if (player.getHealth() <= 0){
-            getCurrentArea().unregisterActor(player);
-            player.enterArea(this.getCurrentArea(), ((EnigmeArea)getCurrentArea()).getSpawnPoint());
-            getCurrentArea().registerActor(player);
-            player.setHealth(100);
+            player.die();
+            player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint());
+            this.getCurrentArea().registerActor(player);
+
+            healthPercentageMax = player.getHealth()/player.maxHealth;
+            health = new TextGraphics(Float.toString((int)healthPercentageMax) , 0.03f, Color.RED);
+            health.setParent(player);
+            health.setAnchor(new Vector(1,1));
+
+            this.getCurrentArea().setViewCandidate(player);
         }
 
         if (this.getCurrentArea() instanceof bossFinal)
             if (((bossFinal)this.getCurrentArea()).isFinished()) {
-                health.setText("CONGRATULATIONS !!!");
-                health.setFontSize(10);
-                health.draw(getWindow());
-                exit(0);
+               getCurrentArea().registerActor(new Constance(getCurrentArea(),  Orientation.LEFT, new DiscreteCoordinates(129,63), 0, true,2000,
+                       new String[]{"Merci !!!", "  Je t'aime !!"}, false));
             }
     }
 
@@ -78,8 +84,9 @@ public class Enigme extends AreaGame {
         this.addArea(new Peristerapolis());
         this.addArea(new Grotte());
         this.addArea(new Dendropolis());
+this.addArea(new maisonAraignee());
 
-        this.setCurrentArea("prasinatefratapolis", true);
+        this.setCurrentArea("ville", true);
 
         player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint());
         this.getCurrentArea().registerActor(player);

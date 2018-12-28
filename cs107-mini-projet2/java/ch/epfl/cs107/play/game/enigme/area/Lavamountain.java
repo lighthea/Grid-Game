@@ -4,15 +4,14 @@ import ch.epfl.cs107.play.game.areagame.actor.Background;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.EnigmeBehaviour;
-import ch.epfl.cs107.play.game.enigme.actor.Apple;
-import ch.epfl.cs107.play.game.enigme.actor.Bahamut;
-import ch.epfl.cs107.play.game.enigme.actor.EnigmeAI;
-import ch.epfl.cs107.play.game.enigme.actor.patapon;
+import ch.epfl.cs107.play.game.enigme.actor.*;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.io.XMLTexts;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Window;
+
+import java.util.Arrays;
 
 public class Lavamountain extends EnigmeArea {
     private int scaleFactor = 15;
@@ -80,8 +79,10 @@ public class Lavamountain extends EnigmeArea {
         super.update(deltaTime);
         if(boss1.getHealth() <=0 &&boss2.getHealth() <=0  && boss3.getHealth() <=0){
             registerActor(new Apple(this,Orientation.DOWN, new DiscreteCoordinates(16,16)));
+            registerActor(new Door(this,"ile", new DiscreteCoordinates(93, 22),Orientation.UP,new DiscreteCoordinates(16,3),
+                    Arrays.asList(new DiscreteCoordinates(16, 3))));
         }
     }
 
-    }
+}
 

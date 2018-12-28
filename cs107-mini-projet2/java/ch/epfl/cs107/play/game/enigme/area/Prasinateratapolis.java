@@ -1,10 +1,7 @@
 package ch.epfl.cs107.play.game.enigme.area;
 
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
-import ch.epfl.cs107.play.game.enigme.actor.Door;
-import ch.epfl.cs107.play.game.enigme.actor.EnigmeAI;
-import ch.epfl.cs107.play.game.enigme.actor.Furbringar;
-import ch.epfl.cs107.play.game.enigme.actor.Plebe;
+import ch.epfl.cs107.play.game.enigme.actor.*;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
@@ -81,6 +78,10 @@ public class Prasinateratapolis extends EnigmeArea {
                     "supra-luminique...","Pour cela il vous faudra traverser la rame de train",
             "Et pour vous aider je vais donc... user de mon pouvoir...", "Le changement de coordonées ! Repère Circulaire vient à moi !"},
                     false));
+            registerActor(new Jomilo(this,  Orientation.DOWN, new DiscreteCoordinates(73,27), 0, true,2000,
+                    new String[]{"Oui c'est un bateo-comotive ! Tu connais pas ?!"}, false));
+            registerActor(new Jomilo(this,  Orientation.DOWN, new DiscreteCoordinates(73,27 -14), 0, true,2000,
+                    new String[]{"Bon laisse tomber les villageois, va vite a gauche !"}, false));
 
             this.registerActor(new EnigmeAI(this, Orientation.DOWN, new DiscreteCoordinates(70, 16), 15, false, 2000,
                     new DiscreteCoordinates(70,15),new DiscreteCoordinates(70,14),new DiscreteCoordinates(70,13),

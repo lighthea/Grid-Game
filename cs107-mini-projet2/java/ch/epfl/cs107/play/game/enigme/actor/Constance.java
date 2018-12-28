@@ -3,12 +3,10 @@ package ch.epfl.cs107.play.game.enigme.actor;
 import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
-import ch.epfl.cs107.play.game.enigme.actor.Animation;
-import ch.epfl.cs107.play.game.enigme.actor.EnigmeNPC;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 
-public class Assistant extends EnigmeNPC {
+public class Constance extends patapon {
     /**
      * Default MovableAreaEntity constructor
      *
@@ -22,24 +20,13 @@ public class Assistant extends EnigmeNPC {
      * @param active
      * @param path        the path to follow
      */
-
-    public Assistant(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed, int coolDown, String[] dialogText, boolean active, DiscreteCoordinates... path) {
+    public Constance(Area area, Orientation orientation, DiscreteCoordinates position, float damages, boolean fixed, int coolDown, String[] dialogText, boolean active, DiscreteCoordinates... path) {
         super(area, orientation, position, damages, fixed, coolDown, dialogText, active, path);
         initialHeigth = .55f;
         initialWidth = .55f;
-        this.sprite = new Sprite("max.new.1", 1, 1.f,this) ;
+        this.sprite = new Sprite("blonde", 1, 1.f,this) ;
         Vector anchor =new Vector(1/6f, 1/3f) ;
-        this.animation = new Animation(this.sprite, anchor, 4, 4, this,1 , 1);
+        this.animation = new Animation(this.sprite, anchor, 4, 4, this,1 , 1,104,100);
         sprite = animation.getAnimation()[0][0];
-
-
-
-    }
-    @Override
-    public void update (float deltaTime){
-        super.update(deltaTime);
-        if (!isInteract())
-            if (getUtilisationCount() > getDialog().length - 1)
-                this.getOwnerArea().unregisterActor(this);
     }
 }

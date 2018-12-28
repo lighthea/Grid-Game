@@ -34,15 +34,18 @@ public class Peristerapolis extends EnigmeArea {
         return scaleFactor;
     }
 
-    private String[] dialog = {"M. Deparos : C'est terrible ! Mes 3 assistants ont disparu !", "Peux-tu les retrouver ? J'ai besoin d'eux pour calmer la révolte !", "Les manifestants veulent changer de maire, car le notre veut tout casser !",
-    "L'ancien maire a menti pour prendre le pouvoir et il a décidé de construire sa 18eme piscine sur le stade municipal de pétanque !",
-    "On peut accépter beaucouip mais pas ce !"};
-    private String[] dialog2 = {"Le maire actuel a dit qu'il rasera les quartiers pauvres ! On ne peut pas laisser faire ca !"};
-    private String[] dialog3 = {"On laisse personne passer ! pas même toi, même si t'as rien à voir, sinon on comprend pas qu'on est pas contents !"};
-    private String[] dialog4 = {"On est là pour un monde meilleur ! Je vais retourner combattre !"};
-    private String[] dialog5 = {"Tu as vu la peleteuse sur les toits ?! c'est vraiment devenu l'anarchie... Le devoir m'appelle !"};
+    private String[] dialog = {"M. Deparos : C'est terrible ! Mes 3 assistants ont disparu !", "Déjà que les dev m'en ont donné que 3...", "On dirait l'EPF... Rien en fait",
+    "On pourrait utiliser des matrices pour les trouver tu sais !", "Je veux dire, au fond...", "Après tout ne vivons nous pas dans une matrice",
+    "de taille 16 par 21 régie par des loies mystérieuse implémentée en une nuit..."};
+    private String[] dialog2 = {"Mais comment ca t'as mis du temps à me troouver c'est pas compliqué !"};
+    private String[] dialog3 = {"On laisse personne passer ! pas même toi, même si t'as rien à voir,",
+                                " sinon on comprend pas qu'on est pas contents !"};
 
-    private String[] dialog7 = {"Retrouvez les assistants ! Je sais pas pourquoi mais ca fais avancer l'histoire !" };
+    private String[] dialogStd = {"Je suis un villageois de la ville", "Tu trouves pas qu'on se répète un peu ?"};
+    private String[] dialog4 = {"Oh non je voulais essayer la nouvelle bière à sat..."};
+    private String[] dialog5 = {"Si tu me donne 10 francs je te donne les sujets...","Comment ca tu veux que je retourne bosser ?!"};
+
+    private String[] dialog7 = {"Stop à la hausse des prix des roulottes !" };
 
 
 
@@ -60,7 +63,7 @@ public class Peristerapolis extends EnigmeArea {
     private Assistant assistant3 = new Assistant(this,  Orientation.LEFT, new DiscreteCoordinates(136,66), 0, true,2000,dialog5, false);
     List<DiscreteCoordinates> list = Arrays.asList( new DiscreteCoordinates(76,21));
     private Door exitDoor = new Door(this,"prasinatefratapolis", new DiscreteCoordinates(74,27),Orientation.DOWN, new DiscreteCoordinates(53,70), Arrays.asList(new DiscreteCoordinates(53,70)));
-
+    private interactiveButton exitDoor2 = new interactiveButton(this,"ville", new DiscreteCoordinates(73,61),Orientation.DOWN, new DiscreteCoordinates(146,78), Arrays.asList(new DiscreteCoordinates(146,78),new DiscreteCoordinates(146,77)));
     @Override
     public boolean begin(Window window, FileSystem fileSystem)  {
         try {
@@ -72,6 +75,26 @@ public class Peristerapolis extends EnigmeArea {
             registerActor(pleb2);
             registerActor(pleb3);
             registerActor(exitDoor);
+            registerActor(exitDoor2);
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(102,76), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(96,61), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(96,74), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(80,73), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(75,89), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(72,95), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(78,103), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(83,107), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(87,115), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(90,106), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(93,108), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(93,103), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(103,103), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(108,93), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(123,90), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(135,72), 0, true,2000,dialogStd, false));
+            registerActor(new Plebe(this,  Orientation.LEFT, new DiscreteCoordinates(129,63), 0, true,2000,dialogStd, false));
+            registerActor(new Jomilo(this,  Orientation.DOWN, new DiscreteCoordinates(99,45), 0, true,2000,
+                    new String[]{"Tu as vraiment laissé ta copine se sacrifier pour toi ?!!", "Mais c'est lache ! Va la sauver illico presto !"}, false));
             return true;
 
         } catch (Exception E){

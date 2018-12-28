@@ -9,11 +9,11 @@
       <sourceFolder url="file://$MODULE_DIR$/res/sounds" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/res/strings" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/res/images/foregrounds" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/res/images/sprites" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/res/images" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/res/images/backgrounds" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/res/images/behaviors" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/res/images/sprites" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />

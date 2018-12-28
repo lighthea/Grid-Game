@@ -31,7 +31,7 @@ public class patapon extends EnigmeNPC {
     public void update (float deltaTime){
         super.update(deltaTime);
         if (!isInteract())
-            if (getUtilisationCount() > 0)
+            if (getUtilisationCount() > getDialog().length - 1)
                 this.getOwnerArea().unregisterActor(this);
     }
 }

@@ -37,8 +37,9 @@ public class Dendropolis extends EnigmeArea {
     public void setScaleFactor(int scaleFactor) {
         this.scaleFactor = scaleFactor;
     }
-    private String[] dialog =  {"Je crois qu'on t'attend sur l'ile de l'ours ! Appuye sur Entrée sinon tu vas être coincé...",
-            "Tu devrais aller voir au port !",
+    private String[] dialog =  {"Je suis madame Lochowsko maire de la ville",
+            "Il y a quelques années j'ai proposé que les anneaux d'annanas suivent une suite...",
+            "Je crois qu'ils ont intégré ca dans un autre univers...",
     "On t'a déjà parlé des intégrales quintuples sur les plans d'Euleur ?", "Ils n'apprennent plus ça au CE2 ?!"};
     private String[] dialog2 = {"Bonjour ! Quel beau temps aujourd'hui ! Ne trouvez pas ma conversation inutile ?"};
     private String[] dialog3 = {"Le marché est ouvert aujourd'hui ! Allons acheter des fleurs !", "Comment ca je devrais " +
@@ -60,6 +61,8 @@ public class Dendropolis extends EnigmeArea {
     private Plebe pleb3 = new Plebe(this,  Orientation.DOWN, new DiscreteCoordinates(61,25), 0, true,2000,dialog7, false);
     private Plebe pleb4 = new Plebe(this,  Orientation.DOWN, new DiscreteCoordinates(38,35), 0, true,2000,dialog5, false);
     private Plebe pleb5 = new Plebe(this,  Orientation.DOWN, new DiscreteCoordinates(38,25), 0, true,2000,dialog6, false);
+
+
     List<DiscreteCoordinates> list = Arrays.asList( new DiscreteCoordinates(76,21));
     private Door LeavingDoor = new Door(this, "ile",new DiscreteCoordinates(130,70),Orientation.DOWN,new DiscreteCoordinates(76,21),list);
 
@@ -74,6 +77,12 @@ public class Dendropolis extends EnigmeArea {
             registerActor(pleb3);
             registerActor(pleb4);
             registerActor(pleb5);
+            registerActor(new Jomilo(this,  Orientation.DOWN, new DiscreteCoordinates(73,55), 0, true,0,
+                    new String[]{"Je suis la légendaire Gandalf la Bleu","Mais pour des raisons de copyright tu m'appelera..."
+                            ,"Jo'milo gardienne de la Manne","Jomilo pour les simplets comme toi","Tu vas débuter une quête dans un monde fabuleux",
+                            "fascinant, fantasmagorique ( et tout plein d'adjectifs en F)","Tu es à la recherche de ta bien aimée," +
+                            " sa divine majesté Constance qui se trouve être sur l'ile de l'ours","Meme si on sait très bien qu'étant en IC, ca va te demander un peu d'imagination",
+                            "Allez, va vite la trouver, cherche une porte volante"}, false  ));
             return true;
 
         } catch (Exception E){
