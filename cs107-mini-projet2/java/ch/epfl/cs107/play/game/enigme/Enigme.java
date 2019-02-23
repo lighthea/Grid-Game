@@ -86,7 +86,7 @@ public class Enigme extends AreaGame {
         this.addArea(new Dendropolis());
 this.addArea(new maisonAraignee());
 
-        this.setCurrentArea("ville", true);
+        this.setCurrentArea("bossFinal", true);
 
         player = new EnigmePlayer(getCurrentArea(), Orientation.DOWN, ((EnigmeArea)getCurrentArea()).getSpawnPoint());
         this.getCurrentArea().registerActor(player);
